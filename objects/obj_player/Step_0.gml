@@ -51,8 +51,8 @@ if(place_meeting(x,y,obj_projectile) && !is_dead)
 {
 	var projectile_hit = instance_nearest(x,y,obj_projectile);
 	health_point -= projectile_hit.dmg;
+	blood_screen = 1
 	instance_destroy(projectile_hit);
-	blood_screen = 1;
 }
 	//Hitted in head ?
 mask_index = spr_playerhs;
@@ -60,8 +60,8 @@ if(place_meeting(x,y,obj_projectile) && !is_dead)
 {
 	var projectile_hit = instance_nearest(x,y,obj_projectile);
 	health_point -= projectile_hit.dmg*3;
+	blood_screen = 1
 	instance_destroy(projectile_hit);
-	blood_screen = 1;
 }
 //Reset collision mask
 mask_index = spr_player;
