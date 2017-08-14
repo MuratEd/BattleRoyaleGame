@@ -1,0 +1,68 @@
+if(obj_game.pause) exit;
+
+//Draw Stamina
+	//Draw Indicator bar
+draw_set_color(c_black);
+draw_rectangle(395,window_get_height()-20,window_get_width()-395,window_get_height()-5,0);
+if(!can_run)
+{
+	draw_set_color(c_gray);
+	draw_rectangle(400,window_get_height()-15,window_get_width()-400,window_get_height()-10,0);
+}
+draw_set_color(c_green);
+draw_rectangle(400,window_get_height()-15,stamina*((window_get_width()-800)/stamina_max)+400,window_get_height()-10,0);
+	//Draw Stamina value
+draw_set_color(c_white);
+draw_set_font(fnt_cocogoose8);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_text(window_get_width()/2,window_get_height()-12,string(stamina)+"/"+string(stamina_max));
+
+//Draw Health
+	//Draw Indicator bar
+draw_set_color(c_black);
+draw_rectangle(395,window_get_height()-45,window_get_width()-395,window_get_height()-25,0);
+draw_set_color(c_maroon);
+draw_rectangle(400,window_get_height()-40,health_point*((window_get_width()-800)/health_max)+400,window_get_height()-30,0);
+	//Draw Health value
+draw_set_color(c_white);
+draw_set_font(fnt_cocogoose12);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_text(window_get_width()/2,window_get_height()-33,string(health_point)+"/"+string(health_max));
+
+//Draw Ranking
+draw_set_color(c_black);
+draw_set_font(fnt_cocogoose20);
+draw_set_halign(fa_right);
+draw_set_valign(fa_center);
+draw_text(window_get_width()-40,40,string(obj_game.player_alive)+"/"+string(obj_game.player_max));
+
+//Draw Kills
+draw_set_color(c_black);
+draw_set_font(fnt_cocogoose20);
+draw_set_halign(fa_left);
+draw_set_valign(fa_center);
+draw_text(20,40,string(player_kill)+" kills");
+
+//Draw blood vignette
+if(blood_screen != 0)
+{
+	draw_sprite_ext(spr_bloodscreen,0,window_get_width()/2,window_get_height()/2,1,1,0,c_white,blood_screen);
+	blood_screen -= 0.01;
+	if(blood_screen<0) blood_screen=0;
+}
+
+//Draw death screen
+if(is_dead)
+{
+	draw_set_color(c_black);
+	draw_set_alpha(0.85);
+	draw_rectangle(0,0,window_get_width(),window_get_height(),0)
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_set_font(fnt_cocogoose70);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text(window_get_width()/2,window_get_height()/2,"Dead...");
+}
