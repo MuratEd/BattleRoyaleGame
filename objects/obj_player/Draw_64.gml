@@ -1,5 +1,3 @@
-if(obj_game.pause) exit;
-
 //Draw Stamina
 	//Draw Indicator bar
 draw_set_color(c_black);
@@ -43,7 +41,27 @@ draw_set_color(c_black);
 draw_set_font(fnt_cocogoose20);
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
-draw_text(20,40,string(player_kill)+" kills");
+if(player_kill>1)
+{
+	draw_text(20,40,string(player_kill)+" kills");
+}
+else
+{
+	draw_text(20,40,string(player_kill)+" kill");
+}
+
+//Draw Statistics
+draw_set_color(c_black);
+draw_set_font(fnt_cocogoose12);
+draw_set_halign(fa_left);
+draw_set_valign(fa_center);
+draw_text(20,window_get_height()-100,"Scope "+string(scope)+"x");
+if(laser_radius)
+{
+	draw_text(20,window_get_height()-80,"Laser active");
+}
+draw_text(20,window_get_height()-60,"Crosshair "+string(pointer_radius));
+draw_text(20,window_get_height()-40,string(projectile_damage)+" damage");
 
 //Draw blood vignette
 if(blood_screen != 0)
@@ -65,4 +83,11 @@ if(is_dead)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 	draw_text(window_get_width()/2,window_get_height()/2,"Dead...");
+	
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_set_font(fnt_cocogoose35);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text(window_get_width()/2,window_get_height()*(3/4),string(player_kill)+" kills     "+"Rank "+string(rank_def));
 }

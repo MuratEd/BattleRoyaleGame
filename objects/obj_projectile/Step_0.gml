@@ -1,3 +1,13 @@
+//Distance
+if(distance_travel < dis)
+{
+	distance_travel += spd;
+}
+else 
+{
+	instance_destroy();
+}
+
 //Colisions
 if(place_meeting(x,y,par_collision))
 {

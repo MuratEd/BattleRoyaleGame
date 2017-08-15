@@ -183,6 +183,14 @@
             }
         },
         {
+            "Key": "3f62cd69-a0da-44f9-8670-87bc951e9b47",
+            "Value": {
+                "id": "908093a4-9415-426d-8448-5090c295b5d9",
+                "resourcePath": "notes\\important_link.yy",
+                "resourceType": "GMNotes"
+            }
+        },
+        {
             "Key": "3f70818d-0f56-4b05-a0b2-09de0b9c4d2c",
             "Value": {
                 "id": "a88ed830-80c2-4050-b401-0b0006c53500",

@@ -1,34 +1,44 @@
-if(obj_game.pause) exit;
-
-
 //Hit detection
+	//Body hit
 mask_index = spr_targetby;
-if(place_meeting(x,y,obj_projectile) && !is_dead)
+if(place_meeting(x,y,obj_projectile))
 {
-	var projectile_hit = instance_nearest(x,y,obj_projectile);
-	health_point -= projectile_hit.dmg;
+	last_projectile_hit = instance_nearest(x,y,obj_projectile);
+	health_point -= last_projectile_hit.dmg;
+	if(health_point <= 0) last_projectile_hit.shooter.player_kill++;
 	audio_play_sound(snd_hit,0,0);
-	instance_destroy(projectile_hit);
+	instance_destroy(last_projectile_hit);
 }
+	
+	//Headshot
 mask_index = spr_targeths;
-if(place_meeting(x,y,obj_projectile) && !is_dead)
+if(place_meeting(x,y,obj_projectile))
 {
-	var projectile_hit = instance_nearest(x,y,obj_projectile);
-	health_point -= projectile_hit.dmg*3;
+	last_projectile_hit = instance_nearest(x,y,obj_projectile);
+	health_point -= last_projectile_hit.dmg*3;
+	if(health_point <= 0) last_projectile_hit.shooter.player_kill++;
 	audio_play_sound(snd_hit,0,0);
 	audio_play_sound(snd_ding,0,0);
-	instance_destroy(projectile_hit);
+	instance_destroy(last_projectile_hit);
 }
+	//Reset collision mask
 mask_index = spr_target;
 
+
+
 //Health
-if(health_point<health_max && can_regen) health_point += health_regen;		//Regeneration of health
+	//Regeneration of health
+if(health_point<health_max && can_regen) health_point += health_regen;
+	//Overflow management
 if(health_point>health_max) health_point = health_max;
 if(health_point<0) health_point = 0;
-//When no more HP
-if(health_point==0 && !is_dead)
+	//When 0HP
+if(health_point==0)
 {
 	instance_destroy();
 	obj_game.player_alive--;
-	obj_player.player_kill++
 }
+
+//Movement
+//x = x + irandom_range(-1,1)*4;
+//y = y + irandom_range(-1,1)*4;

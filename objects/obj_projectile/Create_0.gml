@@ -1,13 +1,7 @@
-dir = 0;
-spd = 0;
-dmg = 0;
-shooter = 0;
+dir = 0;		//Direction angle of the projectile
+spd = 0;		//Speed of the projectile
+dmg = 0;		//Damages deal by the projectile
+dis = 0;		//Distance max travel by the projectile
 
-alarm_set(0,300);
-/*
-dir = point_direction(obj_player.x, obj_player.y, obj_player.x_cross, obj_player.y_cross);
-spd = 30;
-shotter = instance_nearest(x,y,obj_player)
-image_angle = dir;
-mask_index = -1;
-*/
+shooter = 0;	//Instance who fire the projectile
+distance_travel = 0;
