@@ -1,16 +1,17 @@
 //Inputs
-input_left = gamepad_axis_value(0,gp_axislh)<0;
-input_right = gamepad_axis_value(0,gp_axislh)>0;
-input_up = gamepad_axis_value(0,gp_axislv)<0;
-input_down = gamepad_axis_value(0,gp_axislv)>0;
-input_run = gamepad_button_check(0,gp_shoulderlb) || gamepad_button_check(0,gp_shoulderrb);
-input_shot = gamepad_button_check(0,gp_shoulderl) || gamepad_button_check(0,gp_shoulderr);
-input_pickup = gamepad_button_check_pressed(0,gp_face1);
-input_use = gamepad_button_check_pressed(0,gp_face2);
-input_inv_left = gamepad_button_check_pressed(0,gp_padl);
-input_inv_right = gamepad_button_check_pressed(0,gp_padr);
-input_inv_up = gamepad_button_check_pressed(0,gp_padu);
-input_inv_down = gamepad_button_check_pressed(0,gp_padd);
+input_left = gamepad_axis_value(0,gp_axislh)<0 || keyboard_check(ord("Q"));
+input_right = gamepad_axis_value(0,gp_axislh)>0 || keyboard_check(ord("D"));
+input_up = gamepad_axis_value(0,gp_axislv)<0 || keyboard_check(ord("Z"));
+input_down = gamepad_axis_value(0,gp_axislv)>0 || keyboard_check(ord("S"));
+input_run = gamepad_button_check(0,gp_shoulderlb) || gamepad_button_check(0,gp_shoulderrb) || keyboard_check(vk_shift);
+input_shot = gamepad_button_check(0,gp_shoulderl) || gamepad_button_check(0,gp_shoulderr) || mouse_check_button(mb_left);
+input_pickup = gamepad_button_check_pressed(0,gp_face1) || keyboard_check(ord("F"));;
+input_use = gamepad_button_check_pressed(0,gp_face2) || keyboard_check(ord("A"));
+input_inv_left = gamepad_button_check_pressed(0,gp_padl) || keyboard_check_pressed(ord("C")); //Items
+input_inv_right = gamepad_button_check_pressed(0,gp_padr) || keyboard_check_pressed(ord("E")); //Items
+input_inv_up = gamepad_button_check_pressed(0,gp_padu) || mouse_wheel_up(); //Weapons
+input_inv_down = gamepad_button_check_pressed(0,gp_padd) || mouse_wheel_down(); //Weapons
+
 
 //For smoother movement with gamepad
 //https://docs.google.com/document/d/1lZmQleJxKYYW0evvt4t5k2_MgOFSSlhdPbmkVTa1SPU/edit?pageId=107174476290112596279
@@ -164,10 +165,22 @@ projectile_speed = obj_game.weapon_array[weapon_selected].spd;
 projectile_distance = obj_game.weapon_array[weapon_selected].dist;
 
 //Crosshair
-dir_cross = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
-x_cross = x+pointer_radius*cos(degtorad(dir_cross));
-y_cross = y-pointer_radius*sin(degtorad(dir_cross));
-
+var gp_num = gamepad_get_device_count();
+for (var i = 0; i < gp_num; i++)
+{
+	if (gamepad_is_connected(i))
+	{
+		dir_cross = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
+		x_cross = x+pointer_radius*cos(degtorad(dir_cross));
+		y_cross = y-pointer_radius*sin(degtorad(dir_cross));
+	}
+	else
+	{
+		dir_cross = point_direction(x,y,mouse_x,mouse_y);
+		x_cross = mouse_x;
+		y_cross = mouse_y;
+	}
+}
 
 //Shoting
 if(shot_cooldown != 0)
