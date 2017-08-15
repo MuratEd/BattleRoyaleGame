@@ -1,17 +1,36 @@
-if(obj_game.pause) exit;
-
 //Inputs
-input_left = keyboard_check(ord("Q")) || gamepad_axis_value(0,gp_axislh)<0;
-input_right = keyboard_check(ord("D")) || gamepad_axis_value(0,gp_axislh)>0;
-input_up = keyboard_check(ord("Z")) || gamepad_axis_value(0,gp_axislv)<0;
-input_down = keyboard_check(ord("S")) || gamepad_axis_value(0,gp_axislv)>0;
-input_run = keyboard_check(vk_shift) || gamepad_button_check(0,gp_shoulderlb) || gamepad_button_check(0,gp_shoulderrb);
+input_left = gamepad_axis_value(0,gp_axislh)<0;
+input_right = gamepad_axis_value(0,gp_axislh)>0;
+input_up = gamepad_axis_value(0,gp_axislv)<0;
+input_down = gamepad_axis_value(0,gp_axislv)>0;
+input_run = gamepad_button_check(0,gp_shoulderlb) || gamepad_button_check(0,gp_shoulderrb);
 input_shot = gamepad_button_check(0,gp_shoulderl) || gamepad_button_check(0,gp_shoulderr);
+input_pickup = gamepad_button_check_pressed(0,gp_face1);
+input_use = gamepad_button_check_pressed(0,gp_face2);
+input_inv_left = gamepad_button_check_pressed(0,gp_padl);
+input_inv_right = gamepad_button_check_pressed(0,gp_padr);
+input_inv_up = gamepad_button_check_pressed(0,gp_padu);
+input_inv_down = gamepad_button_check_pressed(0,gp_padd);
 
 //For smoother movement with gamepad
 //https://docs.google.com/document/d/1lZmQleJxKYYW0evvt4t5k2_MgOFSSlhdPbmkVTa1SPU/edit?pageId=107174476290112596279
 
-
+//Game paused
+if(obj_game.pause)
+{
+	input_left = 0;
+	input_right = 0;
+	input_up = 0;
+	input_down = 0;
+	input_run = 0;
+	input_shot = 0;
+	input_pickup = 0;
+	input_use = 0;
+	input_inv_left = 0;
+	input_inv_right = 0;
+	input_inv_up = 0;
+	input_inv_down = 0;
+}
 
 //Hit detection
 	//Hitted in body ?
@@ -82,18 +101,72 @@ if(health_point==0 && !is_dead)
 	obj_game.player_alive--;
 }
 
+//Inventory
+if(input_inv_left && item_selected != obj_game.item_id_min)
+{
+	item_selected--;
+}
+if(input_inv_right && item_selected != obj_game.item_id_max)
+{
+	item_selected++;
+}
+if(input_inv_up && weapon_selected != obj_game.weapon_id_max)
+{
+	weapon_selected++;
+}
+if(input_inv_down && weapon_selected != obj_game.weapon_id_min)
+{
+	weapon_selected--;
+}
+
+
+//Item using
+if(input_use && can_use_item && ds_map_find_value(inventory_map,item_selected) != 0)
+{
+	ds_map_replace(inventory_map,item_selected,ds_map_find_value(inventory_map,item_selected)-1);
+	
+	switch(item_selected)
+	{
+		case obj_game.BANDAGE:
+			health_point += 2000;
+			break;
+		case obj_game.MEDIC_KIT:
+			health_max += 2000;
+			health_point += 6000;
+			break;
+		case obj_game.ENERGY_DRINK:
+			stamina += 1000;
+			break;
+		case obj_game.ENERGY_SNACK:
+			stamina_max += 1000;
+			stamina += 600;
+			break;
+		case obj_game.SCOPE:
+			if(scope!=3) scope += 0.5;
+			if(pointer_radius<=1000) pointer_radius += 50;
+			break;
+		case obj_game.LASER:
+			laser_radius = 1;
+			if(pointer_radius<=1000) pointer_radius += 50;
+			break;
+	}
+}
 
 
 //Zoom
 camera_set_view_size(view_camera[0],window_get_width()*scope,window_get_height()*scope);
 
 
+//Weapon selection
+projectile_damage = obj_game.weapon_array[weapon_selected].dmg;
+shot_cooldown_init = obj_game.weapon_array[weapon_selected].cd;
+projectile_speed = obj_game.weapon_array[weapon_selected].spd;
+projectile_distance = obj_game.weapon_array[weapon_selected].dist;
 
 //Crosshair
 dir_cross = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
 x_cross = x+pointer_radius*cos(degtorad(dir_cross));
 y_cross = y-pointer_radius*sin(degtorad(dir_cross));
-
 
 
 //Shoting
@@ -125,6 +198,7 @@ if(is_dead)
 	can_move = 0;
 	can_run = 0;
 	can_regen = 0;
+	can_use_item = 0;
 	health_point = 0;
 	stamina = 0;
 }

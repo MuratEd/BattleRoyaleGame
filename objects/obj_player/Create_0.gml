@@ -10,6 +10,7 @@ slowsp = 2;
 can_move = 1;
 can_run = 1;
 can_regen = 1;
+can_use_item = 1;
 is_dead = 0;
 
 //Stamina
@@ -21,7 +22,7 @@ stamina_cost = 0;
 //Health
 health_point = 10000;
 health_max = 10000;
-health_regen = 2;
+health_regen = 1;
 headshot_dmg = 3;
 blood_screen = 0;
 
@@ -33,20 +34,32 @@ rank_def = 0;
 new_projectile_fire = -1;	//Newest projectile that player has fired
 last_projectile_hit = -1;	//Lastest projectile that player has hit
 shot_cooldown = 0;
-projectile_damage = irandom_range(200,10000);
-shot_cooldown_init = projectile_damage/70;
-projectile_speed = 30;
-projectile_distance = projectile_damage*2;
+projectile_damage = 0;
+shot_cooldown_init = 0;
+projectile_speed = 0;
+projectile_distance = 0;
 
-//Weapons
+//Weapon equipement
 pointer_radius = 100 + irandom_range(0,9)*(projectile_damage/100);
-laser_radius = irandom_range(0,1);
-scope = irandom_range(2,6)/2;
+laser_radius = 0;
+scope = 1;
 
 //Crosshair
 dir_cross = 0;
 x_cross = 0;
 y_cross = 0;
+
+//Inventory
+item_selected = obj_game.item_id_min;
+weapon_selected = obj_game.weapon_id_min;
+
+inventory_map = ds_map_create();
+for(var item_id = obj_game.item_id_min ; item_id<=obj_game.item_id_max ; item_id++)
+{
+	ds_map_add(inventory_map,item_id,0);
+}
+ds_map_replace(inventory_map,obj_game.BANDAGE,5);
+ds_map_replace(inventory_map,obj_game.ENERGY_DRINK,1);
 
 //Game
 obj_game.player_max++;
