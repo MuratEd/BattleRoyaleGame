@@ -40,5 +40,17 @@ if(health_point==0)
 }
 
 //Movement
-//x = x + irandom_range(-1,1)*4;
-//y = y + irandom_range(-1,1)*4;
+if (instance_exists(obj_player))
+{
+	if (distance_to_object(obj_player) > 500)
+	{
+		direction = point_direction(x,y,obj_player.x,obj_player.y);
+		speed = 1;
+	}
+	else
+	{
+		speed = 0;
+	}
+};
+
+
