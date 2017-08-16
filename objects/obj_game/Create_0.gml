@@ -42,6 +42,16 @@ item_array[LASER] = obj_laser;
 
 item_id_max = 15;
 
+//Equipments
+equipment_id_min = 10;
+
+KEVLAR = 10;
+equipment_array[KEVLAR] = obj_kevlar;
+HELMET = 11;
+equipment_array[HELMET] = obj_helmet;
+
+equipment_id_max = 11;
+
 
 //Random generation
 var row;

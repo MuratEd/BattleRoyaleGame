@@ -303,10 +303,26 @@
             }
         },
         {
+            "Key": "4cf54591-3830-492a-9a17-14987c48b38a",
+            "Value": {
+                "id": "fe3d0390-d408-4e4d-9e1e-796f8e00400c",
+                "resourcePath": "objects\\obj_kevlar\\obj_kevlar.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "4e8db28f-ad9d-4d59-b3f9-a5bd37cf66fc",
             "Value": {
                 "id": "6d0611e7-ae9b-43eb-9c36-fdbc91aecd11",
                 "resourcePath": "sprites\\spr_medickit\\spr_medickit.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "4edfde38-0aa2-4969-b0f4-5fce8e591e75",
+            "Value": {
+                "id": "22ada834-fbd5-4ce2-8a25-e31e7d54abce",
+                "resourcePath": "sprites\\spr_kevlar\\spr_kevlar.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -367,6 +383,14 @@
             }
         },
         {
+            "Key": "5f2e28f8-8b0f-4dc3-bed8-bd21c3b9e735",
+            "Value": {
+                "id": "6100bfa4-f947-4a9c-b814-653fedab424b",
+                "resourcePath": "sprites\\spr_helmet\\spr_helmet.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "5ff35c8a-b9f2-4c01-9d05-35dd22c6fb8a",
             "Value": {
                 "id": "23c7a4d3-3e38-49c4-b512-66990510f00e",
@@ -415,6 +439,14 @@
             }
         },
         {
+            "Key": "696c8b07-1994-4515-b550-6c7c4ddde35b",
+            "Value": {
+                "id": "a4bc700a-9dfe-4967-b651-d7dd0645bba2",
+                "resourcePath": "objects\\obj_helmet\\obj_helmet.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "6c211d8b-5e9c-4a5f-9cd2-3151485d975a",
             "Value": {
                 "id": "53418e0d-6f4c-4222-81ed-5bfb38e1ee42",
@@ -444,6 +476,14 @@
                 "id": "d0af6903-0420-419f-9d4e-44af447541a9",
                 "resourcePath": "sprites\\spr_assault\\spr_assault.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "782e7b10-00ac-45cc-8b64-3842ad4705ce",
+            "Value": {
+                "id": "cdec7eeb-430b-42f6-8508-509d6bf0989c",
+                "resourcePath": "views\\782e7b10-00ac-45cc-8b64-3842ad4705ce.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -523,6 +563,14 @@
             "Value": {
                 "id": "d444e3f6-c137-4178-9e70-c9ca759b984a",
                 "resourcePath": "views\\a120f714-8058-49d6-aae9-9d4501497615.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "a3b63577-26f5-4021-befc-a7b64c5985ef",
+            "Value": {
+                "id": "ada666ab-85d6-4ad7-8dad-57087f454cd0",
+                "resourcePath": "views\\a3b63577-26f5-4021-befc-a7b64c5985ef.yy",
                 "resourceType": "GMFolder"
             }
         },

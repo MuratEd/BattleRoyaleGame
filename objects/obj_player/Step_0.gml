@@ -39,7 +39,16 @@ mask_index = spr_playerby;
 if(place_meeting(x,y,obj_projectile) && !is_dead)
 {
 	last_projectile_hit = instance_nearest(x,y,obj_projectile);
-	health_point -= last_projectile_hit.dmg;
+	//Kevlar is equiped ?
+	if (kevlar_isEquiped == 1)
+	{
+		health_point -= last_projectile_hit.dmg * kevlar_reduction;
+		kevlar_durability -= 1;
+	}
+	else
+	{
+		health_point -= last_projectile_hit.dmg;	
+	}
 	blood_screen = 1
 	instance_destroy(last_projectile_hit);
 }
@@ -48,12 +57,32 @@ mask_index = spr_playerhs;
 if(place_meeting(x,y,obj_projectile) && !is_dead)
 {
 	last_projectile_hit = instance_nearest(x,y,obj_projectile);
-	health_point -= last_projectile_hit.dmg*headshot_dmg;
+	//Helmet is equiped ?
+	if (helmet_isEquiped == 1)
+	{
+		health_point -= last_projectile_hit.dmg*headshot_dmg*helmet_reduction;
+		kevlar_durability -= 1;
+	}
+	else
+	{
+		health_point -= last_projectile_hit.dmg*headshot_dmg;
+	}
 	blood_screen = 1
 	instance_destroy(last_projectile_hit);
 }
 	//Reset collision mask
 mask_index = spr_player;
+
+//Equipment
+if (kevlar_durability == 0)
+{
+	kevlar_isEquiped = 0;
+}
+
+if (helmet_durability == 0)
+{
+	helmet_isEquiped = 0;
+}
 
 
 //Run

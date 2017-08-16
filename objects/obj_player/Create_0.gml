@@ -61,6 +61,14 @@ for(var item_id = obj_game.item_id_min ; item_id<=obj_game.item_id_max ; item_id
 ds_map_replace(inventory_map,obj_game.BANDAGE,5);
 ds_map_replace(inventory_map,obj_game.ENERGY_DRINK,1);
 
+//Equipment
+kevlar_isEquiped = 0;
+kevlar_durability = 0;
+kevlar_reduction = 0.5;
+helmet_isEquiped = 0;
+helmet_durability = 0;
+helmet_reduction = 0.5;
+
 //Game
 obj_game.player_max++;
 obj_game.player_alive++;
