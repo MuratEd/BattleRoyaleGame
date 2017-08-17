@@ -10,7 +10,6 @@
     "inheritLayers": false,
     "instanceCreationOrderIDs": [
         "8dc9bfa1-1e60-47ae-8107-7eb2ef7a1add",
-        "ee526577-7def-4011-bc04-a8a4150ce798",
         "bf957cd7-0bb9-4553-9945-05a4fcf3ae73",
         "926b1912-368b-48d6-93f3-f6baa15a7346",
         "9e176525-1eb6-4284-be91-e0814a2f0fde",
@@ -73,7 +72,7 @@
         },
         {
             "__type": "GMRInstanceLayer_Model:#YoYoStudio.MVCFormat",
-            "id": "0c2dd77e-5817-49b0-8359-6c3108f76fd9",
+            "id": "8b5ada84-aa5b-4db5-bcc5-c36af60789d0",
             "modelName": "GMRInstanceLayer",
             "mvc": "1.0",
             "depth": 200,
@@ -90,11 +89,34 @@
             ],
             "m_parentID": "00000000-0000-0000-0000-000000000000",
             "m_serialiseFrozen": false,
-            "name": "Target",
+            "name": "Player",
             "userdefined_depth": false,
             "visible": true,
             "instances": [
-                
+                {
+                    "id": "8dc9bfa1-1e60-47ae-8107-7eb2ef7a1add",
+                    "modelName": "GMRInstance",
+                    "mvc": "1.0",
+                    "ignore": false,
+                    "inheritItemSettings": false,
+                    "m_originalParentID": "00000000-0000-0000-0000-000000000000",
+                    "m_serialiseFrozen": false,
+                    "name": "inst_5EEE0BAE",
+                    "x": 0,
+                    "y": 0,
+                    "IsDnD": false,
+                    "colour": {
+                        "Value": 4294967295
+                    },
+                    "creationCodeFile": "",
+                    "creationCodeType": "",
+                    "inheritCode": false,
+                    "name_with_no_file_rename": "inst_5EEE0BAE",
+                    "objId": "068e0c21-ef04-4f0c-a70d-2965896a988b",
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1
+                }
             ]
         },
         {
@@ -268,14 +290,14 @@
         },
         {
             "__type": "GMRInstanceLayer_Model:#YoYoStudio.MVCFormat",
-            "id": "8b5ada84-aa5b-4db5-bcc5-c36af60789d0",
+            "id": "fb64a205-0ea4-404b-80bc-80432ce65ba8",
             "modelName": "GMRInstanceLayer",
             "mvc": "1.0",
             "depth": 400,
             "grid_x": 32,
             "grid_y": 32,
             "hierarchyFrozen": false,
-            "hierarchyVisible": true,
+            "hierarchyVisible": false,
             "inheritLayerDepth": false,
             "inheritLayerSettings": false,
             "inheritSubLayers": false,
@@ -285,58 +307,11 @@
             ],
             "m_parentID": "00000000-0000-0000-0000-000000000000",
             "m_serialiseFrozen": false,
-            "name": "Player",
+            "name": "Marker",
             "userdefined_depth": false,
-            "visible": true,
+            "visible": false,
             "instances": [
-                {
-                    "id": "8dc9bfa1-1e60-47ae-8107-7eb2ef7a1add",
-                    "modelName": "GMRInstance",
-                    "mvc": "1.0",
-                    "ignore": false,
-                    "inheritItemSettings": false,
-                    "m_originalParentID": "00000000-0000-0000-0000-000000000000",
-                    "m_serialiseFrozen": false,
-                    "name": "inst_5EEE0BAE",
-                    "x": 0,
-                    "y": 0,
-                    "IsDnD": false,
-                    "colour": {
-                        "Value": 4294967295
-                    },
-                    "creationCodeFile": "",
-                    "creationCodeType": "",
-                    "inheritCode": false,
-                    "name_with_no_file_rename": "inst_5EEE0BAE",
-                    "objId": "068e0c21-ef04-4f0c-a70d-2965896a988b",
-                    "rotation": 0,
-                    "scaleX": 1,
-                    "scaleY": 1
-                },
-                {
-                    "id": "ee526577-7def-4011-bc04-a8a4150ce798",
-                    "modelName": "GMRInstance",
-                    "mvc": "1.0",
-                    "ignore": false,
-                    "inheritItemSettings": false,
-                    "m_originalParentID": "00000000-0000-0000-0000-000000000000",
-                    "m_serialiseFrozen": false,
-                    "name": "inst_20167ADD",
-                    "x": 352,
-                    "y": 352,
-                    "IsDnD": false,
-                    "colour": {
-                        "Value": 4294967295
-                    },
-                    "creationCodeFile": "",
-                    "creationCodeType": "",
-                    "inheritCode": false,
-                    "name_with_no_file_rename": "inst_20167ADD",
-                    "objId": "fbfad5c2-d92c-4ebb-8f97-452a14ceb66f",
-                    "rotation": 0,
-                    "scaleX": 1,
-                    "scaleY": 1
-                }
+                
             ]
         },
         {
