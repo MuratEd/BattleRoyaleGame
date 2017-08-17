@@ -64,10 +64,8 @@ ds_map_replace(inventory_map,obj_game.ENERGY_DRINK,1);
 //Equipment
 kevlar_isEquiped = 0;
 kevlar_durability = 0;
-kevlar_reduction = 0.5;
 helmet_isEquiped = 0;
 helmet_durability = 0;
-helmet_reduction = 0.5;
 
 //Game
 obj_game.player_max++;

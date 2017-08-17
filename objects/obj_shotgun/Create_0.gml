@@ -1,6 +1,6 @@
-dmg = 4000;
-cd = dmg/70;
+damage = 4000;
+cooldown = damage/70;
 spd = 30;
-dist = 800;
+distance = damage/4;
 
 weapon_name = "Shotgun";

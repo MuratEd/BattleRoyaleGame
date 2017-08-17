@@ -1,6 +1,6 @@
-dmg = 150;
-cd = dmg/70;
+damage = 150;
+cooldown = damage/70;
 spd = 30;
-dist = dmg*6;
+distance = damage*8;
 
 weapon_name = "Machinegun";

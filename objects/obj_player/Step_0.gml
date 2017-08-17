@@ -1,4 +1,4 @@
-//Inputs
+//Inputs ----------------------------------------------------------------------------
 input_left = gamepad_axis_value(0,gp_axislh)<0 || keyboard_check(ord("Q"));
 input_right = gamepad_axis_value(0,gp_axislh)>0 || keyboard_check(ord("D"));
 input_up = gamepad_axis_value(0,gp_axislv)<0 || keyboard_check(ord("Z"));
@@ -16,7 +16,7 @@ input_inv_down = gamepad_button_check_pressed(0,gp_padd) || mouse_wheel_down(); 
 //For smoother movement with gamepad
 //https://docs.google.com/document/d/1lZmQleJxKYYW0evvt4t5k2_MgOFSSlhdPbmkVTa1SPU/edit?pageId=107174476290112596279
 
-//Game paused
+//Game paused ----------------------------------------------------------------------
 if(obj_game.pause)
 {
 	input_left = 0;
@@ -33,16 +33,16 @@ if(obj_game.pause)
 	input_inv_down = 0;
 }
 
-//Hit detection
+//Hit detection --------------------------------------------------------------------
 	//Hitted in body ?
 mask_index = spr_playerby;
 if(place_meeting(x,y,obj_projectile) && !is_dead)
 {
 	last_projectile_hit = instance_nearest(x,y,obj_projectile);
-	//Kevlar is equiped ?
+		//Kevlar equiped ?
 	if (kevlar_isEquiped == 1)
 	{
-		health_point -= last_projectile_hit.dmg * kevlar_reduction;
+		health_point -= last_projectile_hit.dmg * obj_kevlar.reduction;
 		kevlar_durability -= 1;
 	}
 	else
@@ -52,16 +52,18 @@ if(place_meeting(x,y,obj_projectile) && !is_dead)
 	blood_screen = 1
 	instance_destroy(last_projectile_hit);
 }
+
+
 	//Hitted in head ?
 mask_index = spr_playerhs;
 if(place_meeting(x,y,obj_projectile) && !is_dead)
 {
 	last_projectile_hit = instance_nearest(x,y,obj_projectile);
-	//Helmet is equiped ?
+		//Helmet equiped ?
 	if (helmet_isEquiped == 1)
 	{
-		health_point -= last_projectile_hit.dmg*headshot_dmg*helmet_reduction;
-		kevlar_durability -= 1;
+		health_point -= last_projectile_hit.dmg * headshot_dmg * obj_helmet.reduction;
+		helmet_durability -= 1;
 	}
 	else
 	{
@@ -73,19 +75,20 @@ if(place_meeting(x,y,obj_projectile) && !is_dead)
 	//Reset collision mask
 mask_index = spr_player;
 
-//Equipment
-if (kevlar_durability == 0)
+
+//Equipment ----------------------------------------------------------------------
+if (kevlar_durability <= 0)
 {
 	kevlar_isEquiped = 0;
 }
 
-if (helmet_durability == 0)
+if (helmet_durability <= 0)
 {
 	helmet_isEquiped = 0;
 }
 
 
-//Run
+//Run ----------------------------------------------------------------------------
 if(input_run && can_run)					//If player wants run and he can run
 {	
 	mvsp = runsp;								//Speed up
@@ -107,7 +110,7 @@ else										//If player dont run
 
 
 
-//Stamina
+//Stamina -------------------------------------------------------------------------
 	//Regeneration and cost of stamina
 if(stamina<stamina_max && can_regen) stamina += stamina_regen;
 if(stamina>0) stamina -= stamina_cost;
@@ -117,21 +120,28 @@ if(stamina<0) stamina = 0;
 
 
 
-//Health
+//Health --------------------------------------------------------------------------
+	//Death
+if(health_point==0 && !is_dead)
+{
+	is_dead = 1;
+	can_move = 0;
+	can_run = 0;
+	can_regen = 0;
+	can_use_item = 0;
+	health_point = 0;
+	stamina = 0;
+	rank_def = obj_game.player_alive;
+	obj_game.player_alive--;
+}
 	//Regeneration
 if(health_point<health_max && can_regen) health_point += floor(health_regen*(1+(stamina/stamina_max)*can_run));		//Regeneration of health
 	//Overflow management
 if(health_point>health_max) health_point = health_max;
 if(health_point<0) health_point = 0;
-	//0HP
-if(health_point==0 && !is_dead)
-{
-	is_dead = 1;
-	rank_def = obj_game.player_alive;
-	obj_game.player_alive--;
-}
 
-//Inventory
+
+//Inventory -----------------------------------------------------------------------
 if(input_inv_left && item_selected != obj_game.item_id_min)
 {
 	item_selected--;
@@ -150,7 +160,14 @@ if(input_inv_down && weapon_selected != obj_game.weapon_id_min)
 }
 
 
-//Item using
+//Weapon selection ----------------------------------------------------------------
+projectile_damage = obj_game.weapon_array[weapon_selected].damage;
+shot_cooldown_init = obj_game.weapon_array[weapon_selected].cooldown;
+projectile_speed = obj_game.weapon_array[weapon_selected].spd;
+projectile_distance = obj_game.weapon_array[weapon_selected].distance;
+
+
+//Item using ----------------------------------------------------------------------
 if(input_use && can_use_item && ds_map_find_value(inventory_map,item_selected) != 0)
 {
 	ds_map_replace(inventory_map,item_selected,ds_map_find_value(inventory_map,item_selected)-1);
@@ -183,42 +200,33 @@ if(input_use && can_use_item && ds_map_find_value(inventory_map,item_selected) !
 }
 
 
-//Zoom
+//Zoom -----------------------------------------------------------------------------
 camera_set_view_size(view_camera[0],window_get_width()*scope,window_get_height()*scope);
 
 
-//Weapon selection
-projectile_damage = obj_game.weapon_array[weapon_selected].dmg;
-shot_cooldown_init = obj_game.weapon_array[weapon_selected].cd;
-projectile_speed = obj_game.weapon_array[weapon_selected].spd;
-projectile_distance = obj_game.weapon_array[weapon_selected].dist;
-
-//Crosshair
-var gp_num = gamepad_get_device_count();
-for (var i = 0; i < gp_num; i++)
+//Crosshair ------------------------------------------------------------------------
+if (gamepad_is_connected(0))
 {
-	if (gamepad_is_connected(i))
-	{
-		dir_cross = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
-		x_cross = x+pointer_radius*cos(degtorad(dir_cross));
-		y_cross = y-pointer_radius*sin(degtorad(dir_cross));
-	}
-	else
-	{
-		dir_cross = point_direction(x,y,mouse_x,mouse_y);
-		x_cross = mouse_x;
-		y_cross = mouse_y;
-	}
+	dir_cross = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
+	x_cross = x+pointer_radius*cos(degtorad(dir_cross));
+	y_cross = y-pointer_radius*sin(degtorad(dir_cross));
+}
+else
+{
+	dir_cross = point_direction(x,y,mouse_x,mouse_y);
+	x_cross = mouse_x;
+	y_cross = mouse_y;
 }
 
-//Shoting
+
+//Shoting --------------------------------------------------------------------------
 if(shot_cooldown != 0)
 {
 	shot_cooldown--;
 }
 if(input_shot && !shot_cooldown)
 {
-	audio_play_sound(snd_gunfire,0,0);
+	audio_play_sound_at(snd_gunfire,x,y,0,100,3000,1,0,0);
 	new_projectile_fire = instance_create_layer(x+60*cos(degtorad(dir_cross)),y-60*sin(degtorad(dir_cross)),"Projectiles",obj_projectile);
 	new_projectile_fire.shooter = self;
 	new_projectile_fire.spd = projectile_speed;
@@ -230,24 +238,15 @@ if(input_shot && !shot_cooldown)
 
 
 
-//Player status
+//Player status --------------------------------------------------------------------
 	//Can run ?
-if(stamina==0) can_run = 0;
+if(stamina<=0) can_run = 0;
 if(!can_run && stamina>stamina_max*0.4) can_run = 1;
-	//Death
-if(is_dead)
-{
-	can_move = 0;
-	can_run = 0;
-	can_regen = 0;
-	can_use_item = 0;
-	health_point = 0;
-	stamina = 0;
-}
 
 
 
-//Movement
+
+//Movement -------------------------------------------------------------------------
 var hmove;
 hmove = input_right - input_left;
 hsp = hmove * mvsp;
