@@ -9,7 +9,8 @@ new_projectile = -1;
 last_projectile_hit = -1;
 projectile_damage = 1500;
 projectile_speed = 30;
-projectile_distance = 4000;
+projectile_distance = projectile_damage*2;
+projectile_cooldown = projectile_damage/70;
 
 //Statistics
 player_kill = 0;

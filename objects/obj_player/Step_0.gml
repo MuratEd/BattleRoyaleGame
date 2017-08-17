@@ -130,7 +130,7 @@ if(stamina<0) stamina = 0;
 
 //Health --------------------------------------------------------------------------
 	//Death
-if(health_point==0 && !is_dead)
+if(health_point<=0 && !is_dead)
 {
 	is_dead = 1;
 	can_move = 0;

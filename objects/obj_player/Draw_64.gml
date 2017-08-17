@@ -59,8 +59,14 @@ var timer = 0;
 with(obj_game) {
 	timer = alarm_get(0);
 }
-draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
-
+if(timer%3600/60<10)
+{
+	draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
+}
+else
+{
+	draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+}
 
 //Draw Inventory
 draw_set_color(c_black);
