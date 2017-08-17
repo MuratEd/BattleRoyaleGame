@@ -6,12 +6,14 @@ input_down = gamepad_axis_value(0,gp_axislv)>0 || keyboard_check(ord("S"));
 input_run = gamepad_button_check(0,gp_shoulderlb) || gamepad_button_check(0,gp_shoulderrb) || keyboard_check(vk_shift);
 input_shot = gamepad_button_check(0,gp_shoulderl) || gamepad_button_check(0,gp_shoulderr) || mouse_check_button(mb_left);
 input_pickup = gamepad_button_check_pressed(0,gp_face1) || keyboard_check(ord("F"));;
-input_use = gamepad_button_check_pressed(0,gp_face2) || keyboard_check(ord("A"));
+input_use = gamepad_button_check_pressed(0,gp_face2) || keyboard_check_pressed(ord("A"));
 input_inv_left = gamepad_button_check_pressed(0,gp_padl) || keyboard_check_pressed(ord("C")); //Items
 input_inv_right = gamepad_button_check_pressed(0,gp_padr) || keyboard_check_pressed(ord("E")); //Items
 input_inv_up = gamepad_button_check_pressed(0,gp_padu) || mouse_wheel_up(); //Weapons
 input_inv_down = gamepad_button_check_pressed(0,gp_padd) || mouse_wheel_down(); //Weapons
-
+input_pause = gamepad_button_check_pressed(0,gp_start) || keyboard_check_pressed(vk_escape);
+input_exit = (pause && gamepad_button_check_pressed(0,gp_select)) || (pause && keyboard_check_pressed(vk_f12));
+input_restart = gamepad_button_check_pressed(0,gp_select) || keyboard_check_pressed(vk_backspace);
 
 //For smoother movement with gamepad
 //https://docs.google.com/document/d/1lZmQleJxKYYW0evvt4t5k2_MgOFSSlhdPbmkVTa1SPU/edit?pageId=107174476290112596279
@@ -31,6 +33,7 @@ if(obj_game.pause)
 	input_inv_right = 0;
 	input_inv_up = 0;
 	input_inv_down = 0;
+	input_restart = 0;
 }
 
 //Hit detection --------------------------------------------------------------------
@@ -75,6 +78,11 @@ if(place_meeting(x,y,obj_projectile) && !is_dead)
 	//Reset collision mask
 mask_index = spr_player;
 
+//Area detection -----------------------------------------------------------------
+if(point_distance(x,y,obj_game.x_center,obj_game.y_center) > obj_game.area_radius)
+{
+	health_point -= obj_game.area_damage;
+}
 
 //Equipment ----------------------------------------------------------------------
 if (kevlar_durability <= 0)
@@ -224,9 +232,9 @@ if(shot_cooldown != 0)
 {
 	shot_cooldown--;
 }
-if(input_shot && !shot_cooldown)
+if(input_shot && !shot_cooldown && !is_dead)
 {
-	audio_play_sound_at(snd_gunfire,x,y,0,100,3000,1,0,0);
+	audio_play_sound_at(snd_gunfire,self.x,self.y,0,0,3000,1,0,0);
 	new_projectile_fire = instance_create_layer(x+60*cos(degtorad(dir_cross)),y-60*sin(degtorad(dir_cross)),"Projectiles",obj_projectile);
 	new_projectile_fire.shooter = self;
 	new_projectile_fire.spd = projectile_speed;
@@ -242,9 +250,23 @@ if(input_shot && !shot_cooldown)
 	//Can run ?
 if(stamina<=0) can_run = 0;
 if(!can_run && stamina>stamina_max*0.4) can_run = 1;
-
-
-
+	
+	//Pause the game
+if(input_pause)
+{
+	if(pause == 0) pause = 1;
+	else pause = 0;
+}
+	//Restart the game
+if(input_restart)
+{
+	game_restart();
+}
+	//Quit the game
+if(input_exit)
+{
+	game_end();
+}
 
 //Movement -------------------------------------------------------------------------
 var hmove;

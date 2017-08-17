@@ -50,6 +50,18 @@ else
 	draw_text(20,40,string(player_kill)+" kill");
 }
 
+//Draw Reduction timer
+draw_set_color(c_black);
+draw_set_font(fnt_cocogoose20);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+var timer = 0;
+with(obj_game) {
+	timer = alarm_get(0);
+}
+draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+
+
 //Draw Inventory
 draw_set_color(c_black);
 draw_set_font(fnt_cocogoose12);
@@ -97,4 +109,18 @@ if(is_dead)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 	draw_text(window_get_width()/2,window_get_height()*(3/4),string(player_kill)+" kills             "+"Rank "+string(rank_def));
+}
+
+//Draw Pause menu
+if(pause)
+{
+	draw_set_color(c_black);
+	draw_set_alpha(0.5);
+	draw_rectangle(0,0,room_width,room_height,0);
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_set_font(fnt_cocogoose70);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text(window_get_width()/2,window_get_height()/2,"Pause");
 }

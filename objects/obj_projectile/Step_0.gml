@@ -1,3 +1,5 @@
+image_angle = dir;
+
 //Distance
 if(distance_travel < dis)
 {
@@ -15,6 +17,5 @@ if(place_meeting(x,y,par_collision))
 }
 
 //Movement
-image_angle = dir;
 x = x + ((cos(degtorad(dir)))*spd);
 y = y - ((sin(degtorad(dir)))*spd);

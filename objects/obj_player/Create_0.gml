@@ -12,6 +12,7 @@ can_run = 1;
 can_regen = 1;
 can_use_item = 1;
 is_dead = 0;
+pause = 0;
 
 //Stamina
 stamina = 1000;

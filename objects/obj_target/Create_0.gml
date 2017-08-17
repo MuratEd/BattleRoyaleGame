@@ -11,6 +11,9 @@ projectile_damage = 1500;
 projectile_speed = 30;
 projectile_distance = 4000;
 
+//Statistics
+player_kill = 0;
+
 //Game
 obj_game.player_max++;
 obj_game.player_alive++;

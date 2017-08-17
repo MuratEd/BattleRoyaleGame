@@ -65,7 +65,7 @@ for(col = 32 ; col <= 10048 ; col = col + 64)
 		{
 			instance_create_layer(row, col, "Terrain", obj_stone);
 		}
-		else if( 0.003<= rdm && rdm < 0.003+0.004) //0.4% chance to generate an ennemy
+		else if( 0.003<= rdm && rdm < 0.003+0.0001) //0.4% chance to generate an ennemy
 		{
 			instance_create_layer(row, col, "Target", obj_target);
 		}
@@ -75,3 +75,11 @@ for(col = 32 ; col <= 10048 ; col = col + 64)
 		}
 	}
 }
+
+//Game area
+x_center = room_width/2;
+y_center = room_height/2;
+area_radius = 7300;
+area_damage = 2;
+	//First reduction 2 minute 30 after the start
+alarm_set(0,9000);
