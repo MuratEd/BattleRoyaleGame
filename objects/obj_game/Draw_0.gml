@@ -1,4 +1,4 @@
-draw_set_circle_precision(1000);
+draw_set_circle_precision(5000);
 
 draw_set_color(c_blue);
 for(var i = 0 ; i<10 ; i++) 

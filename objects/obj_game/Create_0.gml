@@ -63,11 +63,17 @@ for(col = 32 ; col <= 10048 ; col = col + 64)
 	for(row = 32 ; row <= 10048 ; row = row + 64)
 	{
 		rdm = random_range(0,1);
-		if(rdm < 0.003)
+		if(rdm < 0.004)
 		{
-			instance_create_layer(row, col, "Terrain", obj_stone);
+			if(random_range(0,1) < 0.6) {
+				instance_create_layer(row, col, "Terrain", obj_stone);
+			}
+			else
+			{
+				instance_create_layer(row, col, "Terrain", obj_tree);
+			}
 		}
-		else if( 0.003<= rdm && rdm < 0.003+0.0008)
+		else if( 0.004<= rdm && rdm < 0.004+0.0008)
 		{
 			instance_create_layer(row, col, "Marker", mrk_loot);
 		}
