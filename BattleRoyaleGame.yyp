@@ -415,6 +415,14 @@
             }
         },
         {
+            "Key": "66fcc1dd-0ef1-41b1-bfd7-c3c6e2245af7",
+            "Value": {
+                "id": "f9f47187-29e9-449f-8a6f-b18908d6f6a8",
+                "resourcePath": "objects\\mrk_loot\\mrk_loot.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "6771aa60-5c8a-4f0c-bad1-86d2131709d1",
             "Value": {
                 "id": "80a1fec7-cb5a-45ae-997f-4651217e508b",
@@ -484,6 +492,14 @@
                 "id": "cdec7eeb-430b-42f6-8508-509d6bf0989c",
                 "resourcePath": "views\\782e7b10-00ac-45cc-8b64-3842ad4705ce.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "78713982-f956-4e49-bea6-aabfd9a82334",
+            "Value": {
+                "id": "7a9e77cb-de25-463d-a8b8-c941404e0f25",
+                "resourcePath": "sprites\\spr_marker\\spr_marker.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -604,6 +620,14 @@
                 "id": "edb8ae72-4a04-423e-8008-3f1837dd2cf1",
                 "resourcePath": "fonts\\fnt_cocogoose12\\fnt_cocogoose12.yy",
                 "resourceType": "GMFont"
+            }
+        },
+        {
+            "Key": "b3234652-063d-48b7-bae3-f6b2d28b518d",
+            "Value": {
+                "id": "86931ceb-00bd-43f7-89c1-f2173892da64",
+                "resourcePath": "views\\b3234652-063d-48b7-bae3-f6b2d28b518d.yy",
+                "resourceType": "GMFolder"
             }
         },
         {

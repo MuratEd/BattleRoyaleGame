@@ -3,6 +3,7 @@ game_on = 1;	//True when game is on
 pause = 0;		//True when paused
 
 //Count players
+nb_player = 20;
 player_max = 0;		//Number of player at the game start
 player_alive = 0;	//Number of actual players alive in game
 
@@ -54,6 +55,7 @@ equipment_id_max = 11;
 
 
 //Random generation
+	//Generate World
 var row;
 var col;
 for(col = 32 ; col <= 10048 ; col = col + 64)
@@ -61,20 +63,24 @@ for(col = 32 ; col <= 10048 ; col = col + 64)
 	for(row = 32 ; row <= 10048 ; row = row + 64)
 	{
 		rdm = random_range(0,1);
-		if(rdm < 0.003) //0.3% to generate a rock
+		if(rdm < 0.003)
 		{
 			instance_create_layer(row, col, "Terrain", obj_stone);
 		}
-		else if( 0.003<= rdm && rdm < 0.003+0.0001) //0.4% chance to generate an ennemy
+		else if( 0.003<= rdm && rdm < 0.003+0.0008)
 		{
-			instance_create_layer(row, col, "Target", obj_target);
-		}
-		else if( 0.007<= rdm && rdm < 0.007+0.006)
-		{
-			instance_create_layer(row, col, "Items", item_array[irandom_range(item_id_min,item_id_max)]);
+			instance_create_layer(row, col, "Marker", mrk_loot);
 		}
 	}
 }
+	//Generate Ennemies
+for(var nb = 0 ; nb < nb_player ; nb++)
+{
+	instance_create_layer(irandom_range(20,room_width-20),irandom_range(20,room_height-20), "Player", obj_target);
+}
+	//Generate Player
+instance_create_layer(irandom_range(20,room_width-20),irandom_range(20,room_height-20), "Player", obj_player);
+
 
 //Game area
 x_center = room_width/2;
