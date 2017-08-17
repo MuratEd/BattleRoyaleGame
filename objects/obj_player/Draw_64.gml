@@ -76,6 +76,17 @@ draw_set_valign(fa_center);
 draw_text(40,window_get_height()-20,string(obj_game.weapon_array[weapon_selected].weapon_name));
 draw_sprite(obj_game.weapon_array[weapon_selected].sprite_index,0,80,window_get_height()-55);
 
+//Draw Equipment
+if (helmet_isEquiped == 1)
+{
+    draw_sprite(spr_helmet,0,160,window_get_height()-55);
+}
+
+if (kevlar_isEquiped == 1)
+{
+	draw_sprite(spr_kevlar,0,240,window_get_height()-55);
+}
+
 //Draw Statistics
 draw_set_color(c_black);
 draw_set_font(fnt_cocogoose12);
