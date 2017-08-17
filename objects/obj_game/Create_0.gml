@@ -73,7 +73,7 @@ for(col = 32 ; col <= 10048 ; col = col + 64)
 				instance_create_layer(row, col, "Terrain", obj_tree);
 			}
 		}
-		else if( 0.004<= rdm && rdm < 0.004+0.0008)
+		else if( 0.004<= rdm && rdm < 0.004+0.001)
 		{
 			instance_create_layer(row, col, "Marker", mrk_loot);
 		}

@@ -47,8 +47,8 @@ scope = 1;
 
 //Crosshair
 dir_cross = 0;
-x_cross = 0;
-y_cross = 0;
+x_cross = x+100;
+y_cross = y;
 
 //Inventory
 item_selected = obj_game.item_id_min;

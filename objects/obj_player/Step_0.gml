@@ -215,9 +215,17 @@ camera_set_view_size(view_camera[0],window_get_width()*scope,window_get_height()
 //Crosshair ------------------------------------------------------------------------
 if (gamepad_is_connected(0))
 {
-	dir_cross = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
-	x_cross = x+pointer_radius*cos(degtorad(dir_cross));
-	y_cross = y-pointer_radius*sin(degtorad(dir_cross));
+	if(!(gamepad_axis_value(0,gp_axisrh)<0.05 && gamepad_axis_value(0,gp_axisrh)>-0.05) || !(gamepad_axis_value(0,gp_axisrv)<0.05 && gamepad_axis_value(0,gp_axisrv)>-0.05))
+	{
+		dir_cross = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
+		x_cross = x+pointer_radius*cos(degtorad(dir_cross));
+		y_cross = y-pointer_radius*sin(degtorad(dir_cross));
+	}
+	else
+	{
+		x_cross = x_cross + hsp;
+		y_cross = y_cross + vsp;
+	}
 }
 else
 {
