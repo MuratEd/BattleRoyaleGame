@@ -82,6 +82,7 @@ mask_index = spr_player;
 if(point_distance(x,y,obj_game.x_center,obj_game.y_center) > obj_game.area_radius)
 {
 	health_point -= obj_game.area_damage;
+	barrier_screen = 1;
 }
 
 //Equipment ----------------------------------------------------------------------

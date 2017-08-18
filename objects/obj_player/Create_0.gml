@@ -26,6 +26,7 @@ health_max = 10000;
 health_regen = 1;
 headshot_dmg = 3;
 blood_screen = 0;
+barrier_screen = 0;
 
 //Statistics
 player_kill = 0;

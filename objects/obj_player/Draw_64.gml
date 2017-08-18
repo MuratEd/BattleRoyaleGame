@@ -99,12 +99,20 @@ draw_set_font(fnt_cocogoose12);
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
 
-//Draw blood vignette
+//Draw vignetting
+	//Blood
 if(blood_screen != 0)
 {
 	draw_sprite_ext(spr_bloodscreen,0,window_get_width()/2,window_get_height()/2,1,1,0,c_white,blood_screen);
 	blood_screen -= 0.01;
 	if(blood_screen<0) blood_screen=0;
+}
+	//Barrier
+if(barrier_screen != 0)
+{
+	draw_sprite_ext(spr_barrierscreen,0,window_get_width()/2,window_get_height()/2,1,1,0,c_white,barrier_screen);
+	barrier_screen -= 0.01;
+	if(barrier_screen<0) barrier_screen=0;
 }
 
 //Draw death screen

@@ -511,6 +511,14 @@
             }
         },
         {
+            "Key": "7a526f2a-9486-49fe-b049-6250ffb2e8d8",
+            "Value": {
+                "id": "2329df0f-6509-408c-9786-99f6281b5eb5",
+                "resourcePath": "sprites\\spr_barrierscreen\\spr_barrierscreen.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "7b355ff4-a4a4-4852-9d7c-39bd3c3c814e",
             "Value": {
                 "id": "abd46261-eccb-4801-8138-b149e9804e19",
