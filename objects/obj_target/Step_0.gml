@@ -28,6 +28,8 @@ mask_index = spr_target;
 if(point_distance(x,y,obj_game.x_center,obj_game.y_center) > obj_game.area_radius)
 {
 	health_point -= obj_game.area_damage;
+	speed = 4;
+	direction = point_direction(x,y,obj_game.x_center,obj_game.y_center);
 }
 
 //Health
@@ -51,10 +53,6 @@ if (instance_exists(obj_player))
 		direction = point_direction(x,y,obj_player.x,obj_player.y);
 		speed = 4;
 	}
-	else
-	{
-		speed = 0;
-	}
-};
+}
 
 

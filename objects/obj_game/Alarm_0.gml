@@ -1,4 +1,4 @@
 if(area_radius>0) area_radius *= 0.8;
-area_damage = floor(area_damage * 1.5);
+area_damage = floor(area_damage * 1.4);
 
-alarm_set(0,1800);
+alarm_set(0,5400);

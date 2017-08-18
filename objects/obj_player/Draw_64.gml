@@ -105,9 +105,9 @@ if(show_map)
 	draw_set_color(c_red);
 	draw_circle(480+x_map,20+y_map,5,0);
 	draw_set_color(c_blue);
-	draw_circle(window_get_width()/2,window_get_height()/2,obj_game.area_radius/10048*960,1)
+	draw_circle(window_get_width()/2,window_get_height()/2,obj_game.area_radius/room_width*960,1)
 	draw_set_color(c_white);
-	draw_circle(window_get_width()/2,window_get_height()/2,(obj_game.area_radius*0.9)/10048*960,1)
+	draw_circle(window_get_width()/2,window_get_height()/2,(obj_game.area_radius*0.9)/room_width*960,1)
 }
 
 //Draw Statistics

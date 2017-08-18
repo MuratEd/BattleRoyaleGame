@@ -1,4 +1,4 @@
-if (distance_to_object(obj_player) > 600)
+if (distance_to_object(obj_player) < 600)
 {
 	//Shooting toward player position
 	audio_play_sound_at(snd_gunfire,x,y,0,1000,3000,1,0,0);

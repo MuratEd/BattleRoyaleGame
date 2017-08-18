@@ -58,9 +58,9 @@ equipment_id_max = 11;
 	//Generate World
 var row;
 var col;
-for(col = 32 ; col <= 10048 ; col = col + 64)
+for(col = 32 ; col <= room_width ; col = col + 64)
 {
-	for(row = 32 ; row <= 10048 ; row = row + 64)
+	for(row = 32 ; row <= room_height ; row = row + 64)
 	{
 		rdm = random_range(0,1);
 		if(rdm < 0.004)
@@ -91,7 +91,7 @@ instance_create_layer(irandom_range(20,room_width-20),irandom_range(20,room_heig
 //Game area
 x_center = room_width/2;
 y_center = room_height/2;
-area_radius = 7300;
+area_radius = (room_width/2)*1.414213;
 area_damage = 2;
-	//First reduction 2 minute 30 after the start
-alarm_set(0,9000);
+	//First reduction 3 minutes after the start
+alarm_set(0,10800);

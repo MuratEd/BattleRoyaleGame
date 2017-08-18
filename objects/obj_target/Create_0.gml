@@ -1,7 +1,7 @@
 //Health
 health_point = 10000;
 health_max = 10000;
-health_regen = 2;
+health_regen = 1;
 can_regen = 1;
 
 //Projectiles
@@ -20,4 +20,4 @@ obj_game.player_max++;
 obj_game.player_alive++;
 
 //Alarm 0 : Shooting timer
-alarm_set(0,irandom_range(1500,5000));
+alarm_set(0,irandom_range(300,600));
