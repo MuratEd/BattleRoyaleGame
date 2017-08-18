@@ -7,6 +7,7 @@ input_run = gamepad_button_check(0,gp_shoulderlb) || gamepad_button_check(0,gp_s
 input_shot = gamepad_button_check(0,gp_shoulderl) || gamepad_button_check(0,gp_shoulderr) || mouse_check_button(mb_left);
 input_pickup = gamepad_button_check_pressed(0,gp_face1) || keyboard_check(ord("F"));;
 input_use = gamepad_button_check_pressed(0,gp_face2) || keyboard_check_pressed(ord("A"));
+input_map = gamepad_button_check_pressed(0,gp_face3) || keyboard_check_pressed(ord("X"));
 input_inv_left = gamepad_button_check_pressed(0,gp_padl) || keyboard_check_pressed(ord("C")); //Items
 input_inv_right = gamepad_button_check_pressed(0,gp_padr) || keyboard_check_pressed(ord("E")); //Items
 input_inv_up = gamepad_button_check_pressed(0,gp_padu) || mouse_wheel_up(); //Weapons
@@ -208,6 +209,15 @@ if(input_use && can_use_item && ds_map_find_value(inventory_map,item_selected) !
 	}
 }
 
+
+//Map ------------------------------------------------------------------------------
+if(input_map)
+{
+	if(!show_map) show_map = 1;
+	else show_map = 0;
+}
+x_map = (x/room_width)*960;
+y_map = (y/room_height)*960;
 
 //Zoom -----------------------------------------------------------------------------
 camera_set_view_size(view_camera[0],window_get_width()*scope,window_get_height()*scope);
