@@ -93,7 +93,7 @@ if (kevlar_isEquiped == 1)
 	draw_sprite(spr_kevlar,0,240,window_get_height()-55);
 }
 
-//Map
+//Draw Map
 if(show_map)
 {
 	draw_set_color(c_black);
@@ -101,20 +101,42 @@ if(show_map)
 	draw_rectangle(0,0,room_width,room_height,0);
 	draw_set_color(c_green);
 	draw_set_alpha(1);
-	draw_rectangle(480,20,480+window_get_width()-960,20+window_get_height()-40,0);	
+	draw_rectangle(440,20,440+window_get_width()-880,20+window_get_height()-40,0);	
 	draw_set_color(c_red);
-	draw_circle(480+x_map,20+y_map,5,0);
+	draw_circle(440+x_map,20+y_map,5,0);
 	draw_set_color(c_blue);
-	draw_circle(window_get_width()/2,window_get_height()/2,obj_game.area_radius/room_width*960,1)
+	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),obj_game.area_radius/room_width*1040,1);
 	draw_set_color(c_white);
-	draw_circle(window_get_width()/2,window_get_height()/2,(obj_game.area_radius*0.9)/room_width*960,1)
-}
+	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),(obj_game.area_radius*0.6)/room_width*1040,1);
 
-//Draw Statistics
-draw_set_color(c_black);
-draw_set_font(fnt_cocogoose12);
-draw_set_halign(fa_left);
-draw_set_valign(fa_center);
+	draw_set_color(c_white);
+	draw_set_font(fnt_cocogoose20);
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_center);
+	draw_text(20,100,"Game time :");
+	draw_text(20,140,"Player alive :");
+	draw_text(20,180,"Player at start :");
+	
+	draw_text(1500,100,"X :");
+	draw_text(1500,140,"Y :");
+	draw_text(1500,220,"Kill :");
+	
+	draw_set_halign(fa_right);
+	if(obj_game.game_time%3600/60<10)
+	{
+		draw_text(420,100,string(floor(obj_game.game_time%216000/3600))+":0"+string(floor(obj_game.game_time%3600/60)));
+	}
+	else
+	{
+		draw_text(420,100,string(floor(obj_game.game_time%216000/3600))+":"+string(floor(obj_game.game_time%3600/60)));
+	}
+	draw_text(420,140,string(obj_game.player_alive));
+	draw_text(420,180,string(obj_game.player_max));
+	
+	draw_text(1900,100,string(floor(x/100)));
+	draw_text(1900,140,string(floor(y/100)));
+	draw_text(1900,220,string(player_kill));
+}
 
 //Draw vignetting
 	//Blood

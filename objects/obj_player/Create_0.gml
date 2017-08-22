@@ -42,7 +42,7 @@ projectile_speed = 0;
 projectile_distance = 0;
 
 //Weapon equipement
-pointer_radius = 100 + irandom_range(0,9)*(projectile_damage/100);
+pointer_radius = 100;
 laser_radius = 0;
 scope = 1;
 

@@ -221,8 +221,8 @@ if(input_map)
 	if(!show_map) show_map = 1;
 	else show_map = 0;
 }
-x_map = (x/room_width)*960;
-y_map = (y/room_height)*960;
+x_map = x/room_width*1040;
+y_map = y/room_height*1040;
 
 //Zoom -----------------------------------------------------------------------------
 if(input_aim)
