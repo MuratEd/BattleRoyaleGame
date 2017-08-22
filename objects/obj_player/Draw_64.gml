@@ -30,42 +30,51 @@ draw_set_valign(fa_center);
 draw_text(window_get_width()/2,window_get_height()-33,string(health_point)+"/"+string(health_max));
 
 //Draw Ranking
-draw_set_color(c_black);
-draw_set_font(fnt_cocogoose20);
-draw_set_halign(fa_right);
-draw_set_valign(fa_center);
-draw_text(window_get_width()-40,40,string(obj_game.player_alive)+"/"+string(obj_game.player_max));
+if(!show_map)
+{
+	draw_set_color(c_black);
+	draw_set_font(fnt_cocogoose20);
+	draw_set_halign(fa_right);
+	draw_set_valign(fa_center);
+	draw_text(window_get_width()-40,40,string(obj_game.player_alive)+"/"+string(obj_game.player_max));
+}
 
 //Draw Kills
-draw_set_color(c_black);
-draw_set_font(fnt_cocogoose20);
-draw_set_halign(fa_left);
-draw_set_valign(fa_center);
-if(player_kill>1)
+if(!show_map)
 {
-	draw_text(20,40,string(player_kill)+" kills");
-}
-else
-{
-	draw_text(20,40,string(player_kill)+" kill");
+	draw_set_color(c_black);
+	draw_set_font(fnt_cocogoose20);
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_center);
+	if(player_kill>1)
+	{
+		draw_text(20,40,string(player_kill)+" kills");
+	}
+	else
+	{
+		draw_text(20,40,string(player_kill)+" kill");
+	}
 }
 
 //Draw Reduction timer
-draw_set_color(c_black);
-draw_set_font(fnt_cocogoose20);
-draw_set_halign(fa_center);
-draw_set_valign(fa_center);
 var timer = 0;
 with(obj_game) {
-	timer = alarm_get(0);
-}
-if(timer%3600/60<10)
+		timer = alarm_get(0);
+	}
+if(!show_map)
 {
-	draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
-}
-else
-{
-	draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+	draw_set_color(c_black);
+	draw_set_font(fnt_cocogoose20);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	if(timer%3600/60<10)
+	{
+		draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
+	}
+	else
+	{
+		draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+	}
 }
 
 //Draw Inventory
@@ -107,15 +116,17 @@ if(show_map)
 	draw_set_color(c_blue);
 	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),obj_game.area_radius/room_width*1040,1);
 	draw_set_color(c_white);
-	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),(obj_game.area_radius*0.6)/room_width*1040,1);
+	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),(obj_game.area_radius*obj_game.area_reduction)/room_width*1040,1);
 
 	draw_set_color(c_white);
 	draw_set_font(fnt_cocogoose20);
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
 	draw_text(20,100,"Game time :");
-	draw_text(20,140,"Player alive :");
-	draw_text(20,180,"Player at start :");
+	draw_text(20,140,"Next shrink :");
+	
+	draw_text(20,220,"Player alive :");
+	draw_text(20,260,"Player at start :");
 	
 	draw_text(1500,100,"X :");
 	draw_text(1500,140,"Y :");
@@ -130,8 +141,16 @@ if(show_map)
 	{
 		draw_text(420,100,string(floor(obj_game.game_time%216000/3600))+":"+string(floor(obj_game.game_time%3600/60)));
 	}
-	draw_text(420,140,string(obj_game.player_alive));
-	draw_text(420,180,string(obj_game.player_max));
+	if(timer%3600/60<10)
+	{
+		draw_text(420,140,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
+	}
+	else
+	{
+		draw_text(420,140,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+	}
+	draw_text(420,220,string(obj_game.player_alive));
+	draw_text(420,260,string(obj_game.player_max));
 	
 	draw_text(1900,100,string(floor(x/100)));
 	draw_text(1900,140,string(floor(y/100)));
@@ -166,6 +185,26 @@ if(is_dead)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 	draw_text(window_get_width()/2,window_get_height()/2,"Dead...");
+	
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_set_font(fnt_cocogoose35);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text(window_get_width()/2,window_get_height()*(3/4),string(player_kill)+" kills             "+"Rank "+string(rank_def));
+}
+
+if(!obj_game.game_on)
+{
+	draw_set_color(c_black);
+	draw_set_alpha(0.85);
+	draw_rectangle(0,0,window_get_width(),window_get_height(),0)
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_set_font(fnt_cocogoose70);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text(window_get_width()/2,window_get_height()/2,"They're all dead !");
 	
 	draw_set_color(c_white);
 	draw_set_alpha(1);

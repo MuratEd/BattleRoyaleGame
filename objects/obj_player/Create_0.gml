@@ -13,6 +13,7 @@ can_regen = 1;
 can_use_item = 1;
 is_dead = 0;
 pause = 0;
+show_map = 0;
 
 //Stamina
 stamina = 1000;
@@ -66,7 +67,6 @@ ds_map_replace(inventory_map,obj_game.ENERGY_DRINK,1);
 //Map
 x_map = 0;
 y_map = 0;
-show_map = 0;
 
 //Equipment
 kevlar_isEquiped = 0;

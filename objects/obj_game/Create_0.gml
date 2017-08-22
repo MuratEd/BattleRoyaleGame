@@ -4,7 +4,7 @@ game_time = 0;
 pause = 0;		//True when paused
 
 //Count players
-nb_player = 20;
+nb_player = 19;
 player_max = 0;		//Number of player at the game start
 player_alive = 0;	//Number of actual players alive in game
 
@@ -94,5 +94,7 @@ x_center = room_width/2;
 y_center = room_height/2;
 area_radius = (room_width/2)*1.414213;
 area_damage = 2;
+area_reduction = 0.7;
+
 	//First reduction 3 minutes after the start
 alarm_set(0,10800);

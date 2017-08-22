@@ -9,5 +9,5 @@ for(var i = 0 ; i<10 ; i++)
 draw_set_color(c_white);
 for(var i = 0 ; i<5 ; i++) 
 {
-	draw_circle(x_center,y_center,(area_radius*0.6) + i,true);
+	draw_circle(x_center,y_center,(area_radius*area_reduction) + i,true);
 }
