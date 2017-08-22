@@ -336,3 +336,6 @@ if(!can_move)
 	//Movement definitive
 x = x + hsp;
 y = y + vsp;
+
+
+//Animation ------------------------------------------------------------------------
