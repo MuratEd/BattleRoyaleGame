@@ -6,8 +6,8 @@ input_up = gamepad_axis_value(0,gp_axislv)<0 || keyboard_check(ord("Z"));
 input_down = gamepad_axis_value(0,gp_axislv)>0 || keyboard_check(ord("S"));
 
 input_run = gamepad_button_check(0,gp_shoulderlb) || gamepad_button_check(0,gp_shoulderrb) || keyboard_check(vk_shift);
-input_shot = gamepad_button_check(0,gp_shoulderr) || mouse_check_button(mb_right);
-input_aim = gamepad_button_check(0,gp_shoulderl) || mouse_check_button(mb_left);
+input_shot = gamepad_button_check(0,gp_shoulderr) || mouse_check_button(mb_left);
+input_aim = gamepad_button_check(0,gp_shoulderl) || mouse_check_button(mb_right);
 input_pickup = gamepad_button_check_pressed(0,gp_face1) || keyboard_check(ord("F"));;
 input_use = gamepad_button_check_pressed(0,gp_face2) || keyboard_check_pressed(ord("A"));
 input_map = gamepad_button_check_pressed(0,gp_face3) || keyboard_check_pressed(ord("X"));

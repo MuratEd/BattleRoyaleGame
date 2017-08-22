@@ -95,6 +95,8 @@ y_center = room_height/2;
 area_radius = (room_width/2)*1.414213;
 area_damage = 2;
 area_reduction = 0.7;
+next_area_radius = area_radius*area_reduction;
+process_resize = 0;
 
 	//First reduction 3 minutes after the start
-alarm_set(0,10800);
+alarm_set(0,600/*10800*/);

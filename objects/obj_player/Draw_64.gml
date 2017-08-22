@@ -67,13 +67,16 @@ if(!show_map)
 	draw_set_font(fnt_cocogoose20);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	if(timer%3600/60<10)
+	if(!obj_game.process_resize)
 	{
-		draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
-	}
-	else
-	{
-		draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+		if(timer%3600/60<10)
+		{
+			draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
+		}
+		else
+		{
+			draw_text(window_get_width()/2,40,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+		}
 	}
 }
 
@@ -116,14 +119,14 @@ if(show_map)
 	draw_set_color(c_blue);
 	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),obj_game.area_radius/room_width*1040,1);
 	draw_set_color(c_white);
-	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),(obj_game.area_radius*obj_game.area_reduction)/room_width*1040,1);
+	draw_circle(440+(obj_game.x_center/room_width*1040),20+(obj_game.y_center/room_height*1040),(obj_game.next_area_radius)/room_width*1040,1);
 
 	draw_set_color(c_white);
 	draw_set_font(fnt_cocogoose20);
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
 	draw_text(20,100,"Game time :");
-	draw_text(20,140,"Next shrink :");
+	if(!obj_game.process_resize) draw_text(20,140,"Next shrink :");
 	
 	draw_text(20,220,"Player alive :");
 	draw_text(20,260,"Player at start :");
@@ -141,13 +144,16 @@ if(show_map)
 	{
 		draw_text(420,100,string(floor(obj_game.game_time%216000/3600))+":"+string(floor(obj_game.game_time%3600/60)));
 	}
-	if(timer%3600/60<10)
+	if(!obj_game.process_resize)
 	{
-		draw_text(420,140,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
-	}
-	else
-	{
-		draw_text(420,140,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+		if(timer%3600/60<10)
+		{
+			draw_text(420,140,string(floor(timer%216000/3600))+":0"+string(floor(timer%3600/60)));
+		}
+		else
+		{
+			draw_text(420,140,string(floor(timer%216000/3600))+":"+string(floor(timer%3600/60)));
+		}
 	}
 	draw_text(420,220,string(obj_game.player_alive));
 	draw_text(420,260,string(obj_game.player_max));
