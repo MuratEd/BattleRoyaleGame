@@ -8,6 +8,7 @@ gen_laser = irandom_range(0,1);
 gen_helmet = irandom_range(0,1);
 gen_kevlar = irandom_range(0,1);
 
+//Generate items near the marker
 for(var i = 0 ; i<gen_bandage ; i++)
 {
 	instance_create_layer(x+irandom_range(-5,5)*32, y+irandom_range(-5,5)*32, "Items",obj_bandage);

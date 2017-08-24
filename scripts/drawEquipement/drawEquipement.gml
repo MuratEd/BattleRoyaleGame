@@ -1,3 +1,4 @@
+//Draw Equipment
 helmet = argument0;
 kevlar = argument1;
 

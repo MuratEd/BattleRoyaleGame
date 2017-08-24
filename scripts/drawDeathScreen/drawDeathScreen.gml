@@ -1,3 +1,4 @@
+//Draw Death Screen
 kill = argument0;
 rank = argument1;
 

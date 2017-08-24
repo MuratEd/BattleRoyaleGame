@@ -1,3 +1,4 @@
+//Initialization
 damage = 8000;
 cooldown = damage/70;
 spd = 30;

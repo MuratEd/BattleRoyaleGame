@@ -1,3 +1,4 @@
+//Initialization
 dir = 0;		//Direction angle of the projectile
 spd = 0;		//Speed of the projectile
 dmg = 0;		//Damages deal by the projectile

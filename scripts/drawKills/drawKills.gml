@@ -1,3 +1,4 @@
+//Draw Kills
 kill = argument0;
 
 draw_set_color(c_black);

@@ -1,3 +1,4 @@
+//Initialization
 //Game status
 game_on = 1;	//True when game is on
 game_time = 0;

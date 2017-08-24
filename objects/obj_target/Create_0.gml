@@ -1,3 +1,4 @@
+//Initialization
 name = "Target";
 
 //Health

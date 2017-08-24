@@ -1,3 +1,4 @@
+//Draw Reduction Timer
 timer = argument0;
 
 draw_set_color(c_black);

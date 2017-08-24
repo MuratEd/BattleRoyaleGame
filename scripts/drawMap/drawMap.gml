@@ -1,3 +1,4 @@
+//Draw Map
 x_map_player = argument0;
 y_map_player = argument1;
 

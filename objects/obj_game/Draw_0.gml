@@ -1,3 +1,4 @@
+//Drawing Area Circles
 draw_set_circle_precision(5000);
 
 draw_set_color(c_blue);

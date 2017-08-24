@@ -1,3 +1,4 @@
+//Initialization
 equipment_id = obj_game.KEVLAR;
 equipment_name = "Kevlar";
 

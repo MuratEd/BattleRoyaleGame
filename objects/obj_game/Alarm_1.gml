@@ -1,3 +1,4 @@
+//Smooth reduction to the next area
 area_radius -= 5;
 
 if(area_radius <= next_area_radius)
