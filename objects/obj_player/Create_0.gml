@@ -49,7 +49,7 @@ projectile_distance = 0;
 //Weapon equipement
 pointer_radius = 100;
 laser_radius = 0;
-scope = 2;
+scope = 1;
 
 //Crosshair
 dir_cross = 0;

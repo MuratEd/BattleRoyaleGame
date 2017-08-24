@@ -57,7 +57,8 @@ if(place_meeting(x,y,obj_projectile) && !is_dead)
 	{
 		health_point -= last_projectile_hit.dmg;	
 	}
-	blood_screen = 1
+	blood_screen = 1;
+	audio_play_sound(snd_hit,0,0);
 	instance_destroy(last_projectile_hit);
 }
 
@@ -77,7 +78,8 @@ if(place_meeting(x,y,obj_projectile) && !is_dead)
 	{
 		health_point -= last_projectile_hit.dmg*headshot_dmg;
 	}
-	blood_screen = 1
+	blood_screen = 1;
+	audio_play_sound(snd_hit,0,0);
 	instance_destroy(last_projectile_hit);
 }
 	//Reset collision mask
