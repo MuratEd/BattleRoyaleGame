@@ -1,3 +1,5 @@
+name = "Player";
+
 //Movement
 hsp = 0;
 vsp = 0;
@@ -12,6 +14,8 @@ can_run = 1;
 can_regen = 1;
 can_use_item = 1;
 is_dead = 0;
+
+//GUI status
 pause = 0;
 show_map = 0;
 
@@ -24,14 +28,14 @@ stamina_cost = 0;
 //Health
 health_point = 10000;
 health_max = 10000;
-health_regen = 1;
+health_regen = 0;
 headshot_dmg = 3;
 blood_screen = 0;
 barrier_screen = 0;
 
 //Statistics
 player_kill = 0;
-rank_def = 0;
+rank_def = 1;
 
 //Projectiles
 new_projectile_fire = -1;	//Newest projectile that player has fired
@@ -45,11 +49,11 @@ projectile_distance = 0;
 //Weapon equipement
 pointer_radius = 100;
 laser_radius = 0;
-scope = 1;
+scope = 2;
 
 //Crosshair
 dir_cross = 0;
-x_cross = x+100;
+x_cross = x + 100;
 y_cross = y;
 
 //Inventory

@@ -1,5 +1,4 @@
 //Inputs ----------------------------------------------------------------------------
-
 input_left = gamepad_axis_value(0,gp_axislh)<0 || keyboard_check(ord("Q"));
 input_right = gamepad_axis_value(0,gp_axislh)>0 || keyboard_check(ord("D"));
 input_up = gamepad_axis_value(0,gp_axislv)<0 || keyboard_check(ord("Z"));
@@ -176,10 +175,10 @@ if(input_inv_down && weapon_selected != obj_game.weapon_id_min)
 
 
 //Weapon selection ----------------------------------------------------------------
-projectile_damage = obj_game.weapon_array[weapon_selected].damage;
-shot_cooldown_init = obj_game.weapon_array[weapon_selected].cooldown;
-projectile_speed = obj_game.weapon_array[weapon_selected].spd;
-projectile_distance = obj_game.weapon_array[weapon_selected].distance;
+projectile_damage = obj_game.item_array[weapon_selected].damage;
+shot_cooldown_init = obj_game.item_array[weapon_selected].cooldown;
+projectile_speed = obj_game.item_array[weapon_selected].spd;
+projectile_distance = obj_game.item_array[weapon_selected].distance;
 
 
 //Item using ----------------------------------------------------------------------
@@ -197,14 +196,14 @@ if(input_use && can_use_item && ds_map_find_value(inventory_map,item_selected) !
 			health_point += 6000;
 			break;
 		case obj_game.ENERGY_DRINK:
-			stamina += 1000;
+			stamina += 500;
 			break;
 		case obj_game.ENERGY_SNACK:
-			stamina_max += 1000;
+			stamina_max += 200;
 			stamina += 600;
 			break;
 		case obj_game.SCOPE:
-			if(scope!=3) scope += 0.5;
+			if(scope!=3) scope += 0.2;
 			if(pointer_radius<=1000) pointer_radius += 50;
 			break;
 		case obj_game.LASER:
@@ -216,13 +215,13 @@ if(input_use && can_use_item && ds_map_find_value(inventory_map,item_selected) !
 
 
 //Map ------------------------------------------------------------------------------
-if(input_map)
-{
-	if(!show_map) show_map = 1;
-	else show_map = 0;
-}
 x_map = x/room_width*1040;
 y_map = y/room_height*1040;
+if(input_map)
+{
+	if(show_map) show_map=0;
+	else show_map=1;
+}
 
 //Zoom -----------------------------------------------------------------------------
 if(input_aim)

@@ -1,4 +1,4 @@
-area_radius--;
+area_radius -= 5;
 
 if(area_radius <= next_area_radius)
 {
@@ -9,5 +9,5 @@ if(area_radius <= next_area_radius)
 else
 {
 	process_resize = 1;
-	alarm_set(1,5);
+	alarm_set(1,2);
 }

@@ -1,6 +1,5 @@
 draw_self();
 
-/*
 //Draw Health
 	//Health bar
 draw_set_color(c_black);
@@ -14,4 +13,11 @@ draw_set_alpha(1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_text(x,y-41,string(health_point));
-*/
+
+//Draw Name
+draw_set_color(c_black);
+draw_set_font(fnt_cocogoose12);
+draw_set_alpha(1);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_text(x,y-60,string(name));

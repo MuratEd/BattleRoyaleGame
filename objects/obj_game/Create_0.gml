@@ -4,55 +4,55 @@ game_time = 0;
 pause = 0;		//True when paused
 
 //Count players
-nb_player = 19;
+nb_player = 99;
 player_max = 0;		//Number of player at the game start
 player_alive = 0;	//Number of actual players alive in game
 
-//Weapons
+//Item ID
+id_min = 10;
+
 weapon_id_min = 10;
-
 PISTOL = 10;
-weapon_array[PISTOL] = obj_pistol;
 UMP = 11;
-weapon_array[UMP] = obj_ump;
 SHOTGUN = 12;
-weapon_array[SHOTGUN] = obj_shotgun;
 ASSAULT = 13;
-weapon_array[ASSAULT] = obj_assault;
 SNIPER = 14;
-weapon_array[SNIPER] = obj_sniper;
 MACHINEGUN = 15;
-weapon_array[MACHINEGUN] = obj_machinegun;
-
 weapon_id_max = 15;
 
-//Items
-item_id_min = 10;
+equipement_id_min = 30;
+HELMET = 30;
+KEVLAR = 31;
+equipement_id_max = 31;
 
-BANDAGE = 10;
+item_id_min = 40;
+BANDAGE = 40;
+MEDIC_KIT = 41;
+ENERGY_DRINK = 42;
+ENERGY_SNACK = 43;
+SCOPE = 44;
+LASER = 45;
+item_id_max = 45;
+
+id_max = 45;
+
+//Item list
+item_array[PISTOL] = obj_pistol;
+item_array[UMP] = obj_ump;
+item_array[SHOTGUN] = obj_shotgun;
+item_array[ASSAULT] = obj_assault;
+item_array[SNIPER] = obj_sniper;
+item_array[MACHINEGUN] = obj_machinegun;
+
+item_array[HELMET] = obj_helmet;
+item_array[KEVLAR] = obj_kevlar;
+
 item_array[BANDAGE] = obj_bandage;
-MEDIC_KIT = 11;
 item_array[MEDIC_KIT] = obj_medickit;
-ENERGY_DRINK = 12;
 item_array[ENERGY_DRINK] = obj_energydrink;
-ENERGY_SNACK = 13;
 item_array[ENERGY_SNACK] = obj_energysnack;
-SCOPE = 14;
 item_array[SCOPE] = obj_scope;
-LASER = 15;
 item_array[LASER] = obj_laser;
-
-item_id_max = 15;
-
-//Equipments
-equipment_id_min = 10;
-
-KEVLAR = 10;
-equipment_array[KEVLAR] = obj_kevlar;
-HELMET = 11;
-equipment_array[HELMET] = obj_helmet;
-
-equipment_id_max = 11;
 
 
 //Random generation
@@ -99,4 +99,4 @@ next_area_radius = area_radius*area_reduction;
 process_resize = 0;
 
 	//First reduction 3 minutes after the start
-alarm_set(0,600/*10800*/);
+alarm_set(0,10800);

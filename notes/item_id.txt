@@ -1,0 +1,52 @@
+Items ID :
+
+10- Pistol
+11- UMP
+12- Shotgun
+13- Assault Rifle
+14- Sniper Rifle
+15- Machinegun
+16- 
+17- 
+18- 
+19- 
+20- Pistol ammo
+21- UMP ammo
+22- Shotgun ammo
+23- Assault ammo
+24- Sniper ammo
+25- Machinegun ammo
+26- 
+27- 
+28- 
+29- 
+30- Helmet
+31- Kevlar
+32- Small backpack
+33- Medium backpack
+34- Large backpack
+35- 
+36- 
+37- 
+38- 
+39- 
+40- Bandage
+41- Medic Kit
+42- Energy drink
+43- Energy snack
+44- Scope
+45- Laser
+46- 
+47- 
+48- 
+49- 
+50- 
+51- 
+52- 
+53- 
+54- 
+55- 
+56- 
+57- 
+58- 
+59- 
