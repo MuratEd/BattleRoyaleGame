@@ -5,6 +5,8 @@ gen_energydrink = irandom_range(0,2);
 gen_energysnack = irandom_range(0,1);
 gen_scope = irandom_range(0,1);
 gen_laser = irandom_range(0,1);
+gen_helmet = irandom_range(0,1);
+gen_kevlar = irandom_range(0,1);
 
 for(var i = 0 ; i<gen_bandage ; i++)
 {
@@ -29,4 +31,12 @@ for(var i = 0 ; i<gen_scope ; i++)
 for(var i = 0 ; i<gen_laser ; i++)
 {
 	instance_create_layer(x+irandom_range(-5,5)*32, y+irandom_range(-5,5)*32, "Items",obj_laser);
+}
+for (var i = 0; i<gen_helmet; i++)
+{
+	instance_create_layer(x+irandom_range(-5,5)*32, y+irandom_range(-5,5)*32, "Items",obj_helmet);
+}
+for (var i = 0; i<gen_kevlar; i++)
+{
+	instance_create_layer(x+irandom_range(-5,5)*32, y+irandom_range(-5,5)*32, "Items",obj_kevlar);
 }
