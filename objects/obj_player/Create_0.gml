@@ -80,4 +80,5 @@ obj_game.player_alive++;
 
 leftDeadzone = 0.5;
 rightDeadzone = 0.02;
+playController = 1;
 gamepad_set_axis_deadzone(0,min(leftDeadzone,rightDeadzone));

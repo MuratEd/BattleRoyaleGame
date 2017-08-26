@@ -179,7 +179,7 @@ else
 #region Stamina
 
 //If player alive : Regenerate stamina
-if(staminaPoint<staminaMax && !isDead) staminaPoint += staminaRegen;
+if(staminaPoint<=staminaMax && !isDead) staminaPoint += staminaRegen;
 
 //Overflow management : if (Stamina over StaminaMax) or (Stamina under 0)
 if(staminaPoint>staminaMax) staminaPoint = staminaMax;
@@ -247,6 +247,11 @@ if(inputInvDown && weaponSelected != obj_game.weapon_id_min)
 	projectileDistance = obj_game.item_array[weaponSelected].distance;
 }
 
+projectileDamage = obj_game.item_array[weaponSelected].damage;
+projectileHeadshot = obj_game.item_array[weaponSelected].hs_damage;
+projectileSpeed = obj_game.item_array[weaponSelected].spd;
+projectileDistance = obj_game.item_array[weaponSelected].distance;
+
 #endregion
 
 #region Item using
@@ -287,9 +292,13 @@ if(inputUse && ds_map_find_value(inventoryMap,itemSelected) != 0 && !isDead)
 
 #endregion
 
-#region Map *
+#region Map
+
+//Update player position on the map
 mapX = x/room_width*1040;
 mapY = y/room_height*1040;
+
+//Show map - hide map
 if(inputMap)
 {
 	if(showMap) showMap=0;
@@ -298,11 +307,14 @@ if(inputMap)
 
 #endregion
 
-#region Zoom *
+#region Zoom
+
+//If aim : zoom out
 if(inputAim)
 {
 	camera_set_view_size(view_camera[0],window_get_width()*scope,window_get_height()*scope);
 }
+//If not aim : reset zoom
 else
 {
 	camera_set_view_size(view_camera[0],window_get_width(),window_get_height());
@@ -310,21 +322,26 @@ else
 
 #endregion
 
-#region Crosshair *
-if (gamepad_is_connected(0))
+#region Crosshair
+
+//If gamepad connected and play with gamepad
+if (gamepad_is_connected(0) && playController)
 {
+	//If gamepad right joystick has change : Update crosshair position
 	if(!(gamepad_axis_value(0,gp_axisrh)<0.05 && gamepad_axis_value(0,gp_axisrh)>-0.05) || !(gamepad_axis_value(0,gp_axisrv)<0.05 && gamepad_axis_value(0,gp_axisrv)>-0.05))
 	{
 		crossDirection = point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv));
 		crossX = x+crossRadius*cos(degtorad(crossDirection));
 		crossY = y-crossRadius*sin(degtorad(crossDirection));
 	}
+	//If no changes : crosshair follows the player
 	else
 	{
 		crossX = crossX + hsp;
 		crossY = crossY + vsp;
 	}
 }
+//If gamepad not connected or play without gamepad
 else
 {
 	crossDirection = point_direction(x,y,mouse_x,mouse_y);
@@ -334,27 +351,36 @@ else
 
 #endregion
 
-#region Shoting *
+#region Shoting
+
+//Reduce cooldown
 if(shotCooldown != 0)
 {
 	shotCooldown--;
 }
+
+//If cooldown up, player alive, want fire
 if(inputShot && !shotCooldown && !isDead)
 {
 	audio_play_sound_at(snd_gunfire,self.x,self.y,0,0,3000,1,0,0);
+	
+	//Set statistics of the projectile
 	newProjectileFire = instance_create_layer(x+60*cos(degtorad(crossDirection)),y-60*sin(degtorad(crossDirection)),"Projectiles",obj_projectile);
+	newProjectileFire.direction = crossDirection;
 	newProjectileFire.shooter = self;
 	newProjectileFire.spd = projectileSpeed;
 	newProjectileFire.dmg = projectileDamage;
 	newProjectileFire.hsdmg = projectileHeadshot;
 	newProjectileFire.dis = projectileDistance;
 	newProjectileFire.dir = point_direction(obj_player.x, obj_player.y, obj_player.crossX, obj_player.crossY);
+	
+	//Set cooldown
 	shotCooldown = obj_game.item_array[weaponSelected].cooldown;
 }
 
 #endregion
 
-#region Player status *
+#region Player status
 	//Can run ?
 if(staminaPoint<=0) canRun = 0;
 if(!canRun && staminaPoint>staminaMax*0.25) canRun = 1;
@@ -378,16 +404,16 @@ if(inputExit)
 
 #endregion
 
-#region Movement *
-var hmove;
-hmove = inputRight - inputLeft;
-hsp = hmove * mvsp;
+#region Movement
 
-var vmove;
-vmove = inputDown - inputUp;
-vsp = vmove * mvsp;
+//Update horizontal and vertical speed
+var hm = (inputRight - inputLeft);
+hsp = hm * mvsp;
 
-	//Collisions
+var vm = (inputDown - inputUp);
+vsp = vm * mvsp;
+
+//If horizontal collisions : Cancel horizontal moving
 if(place_meeting(x+hsp,y,par_collision))
 {
 	while(!place_meeting(x+sign(hsp),y,par_collision))
@@ -397,6 +423,7 @@ if(place_meeting(x+hsp,y,par_collision))
 	hsp = 0;
 }
 
+//If vertical collisions : Cancel vertical moving
 if(place_meeting(x,y+vsp,par_collision))
 {
 	while(!place_meeting(x,y+sign(vsp),par_collision))
@@ -406,14 +433,14 @@ if(place_meeting(x,y+vsp,par_collision))
 	vsp = 0;
 }
 
-	//No movement when dead
-if(!canMove)
+//If player is dead : Cancel all movements
+if(isDead)
 {
 	hsp = 0;
 	vsp = 0;
 }
 
-	//Movement definitive
+//Apply movement
 x = x + hsp;
 y = y + vsp;
 

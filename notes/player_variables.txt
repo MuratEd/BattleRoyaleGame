@@ -57,6 +57,7 @@ projectileDistance				INT		Maximum distance that projectile can travel
 
 leftDeadzone					INT		Value of the deadzone of the left joystick
 rightDeadzone					INT		Value of the deadzone of the right joystick
+playController					BOOL	Player plays with gamepad controller ?
 
 inputLeft						BOOL	Horizontal value of left joystick is lower than left deadzone ?
 inputRight						BOOL	Horizontal value of left joystick is greater than left deadzone ?

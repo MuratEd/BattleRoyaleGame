@@ -1,7 +1,7 @@
 if (distance_to_object(nearest_ennemy) < projectile_distance-80 && ennemy_insight && speed == 0)
 {
 	//Shooting toward player position
-	audio_play_sound_at(snd_gunfire,x,y,0,1000,1000,1,0,0);
+	//audio_play_sound_at(snd_gunfire,x,y,0,1000,1000,1,0,0);
 	new_projectile = instance_create_layer(x+60*cos(degtorad(point_direction(x,y,nearest_ennemy.x,nearest_ennemy.y))),y-60*sin(degtorad(point_direction(x,y,nearest_ennemy.x,nearest_ennemy.y))),"Projectiles",obj_projectile);
 	new_projectile.shooter = self;
 	new_projectile.spd = projectile_speed;

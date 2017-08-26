@@ -27,11 +27,11 @@ else
 
 if(bloodScreen != 0)
 {
-	drawBloodVignetting(bloodScreen);
+	bloodScreen = drawBloodVignetting(bloodScreen);
 }
 if(barrierScreen != 0)
 {
-	drawBarrierVignetting(barrierScreen);
+	barrierScreen = drawBarrierVignetting(barrierScreen);
 }
 
 if(showPause)
