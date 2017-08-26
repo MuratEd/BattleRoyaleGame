@@ -1,0 +1,85 @@
+#############################
+##          ITEM           ##
+#############################
+
+Bandage :
+	Regenerate 10% HP
+
+Medic Kit :
+	Regenerate 50% HP
+
+Energy drink :
+	Regenerate 25% stamina
+
+Energy snack :
+	Give a +30% speed buff
+
+Scope :
+	Increase dezoom by 0.2
+	
+Laser :
+	Enable laser pointer
+	
+Grip :
+	Reduce recoil when shooting
+	
+	
+
+
+#############################
+##         WEAPON          ##
+#############################
+	
+Pistol :
+	Magazine : 20
+	Damage : 50
+	Range : 800
+	Headshot coef : +50%
+	Fire : 3/sec
+	Recoil : 
+	Penetration : 20%
+
+UMP :
+	Magazine : 25
+	Damage : 20
+	Range : 50
+	Headshot coef : +50%
+	Fire : 10/sec
+	Recoil : 
+	Penetration : 25%
+
+Shotgun :
+	Magazine : 6
+	Damage : 300
+	Range : 1000
+	Headshot coef : +100%
+	Fire : 2/sec
+	Recoil : 
+	Penetration : 30%
+
+Assault rifle :
+	Magazine : 30
+	Damage : 250
+	Range : 3500
+	Headshot coef : +175%
+	Fire : 5/sec
+	Recoil : 
+	Penetration : 65%
+
+Sniper rifle :
+	Magazine : 5
+	Damage : 600
+	Range : 6000
+	Headshot coef : +200%
+	Fire : 0.8/sec
+	Recoil : 
+	Penetration : 90%
+
+Machinegun :
+	Magazine : 100
+	Damage : 15
+	Range : 800
+	Headshot coef : +75%
+	Fire : 12/sec
+	Recoil : 
+	Penetration : 20%

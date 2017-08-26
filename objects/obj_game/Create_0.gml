@@ -1,11 +1,11 @@
 //Initialization
+randomize();
+
 //Game status
-game_on = 1;	//True when game is on
 game_time = 0;
-pause = 0;		//True when paused
 
 //Count players
-nb_player = 99;
+nb_player = 49;
 player_max = 0;		//Number of player at the game start
 player_alive = 0;	//Number of actual players alive in game
 
@@ -21,9 +21,21 @@ SNIPER = 14;
 MACHINEGUN = 15;
 weapon_id_max = 15;
 
+ammo_id_min = 20;
+AMMO_PISTOL = 20;
+AMMO_UMP = 21;
+AMMO_SHOTGUN = 22;
+AMMO_ASSAULT = 23;
+AMMO_SNIPER = 24;
+AMMO_MACHINEGUN = 25;
+ammo_id_max = 25;
+
 equipement_id_min = 30;
 HELMET = 30;
 KEVLAR = 31;
+SMALL_BAG = 32;
+MEDIUM_BAG = 33;
+LARGE_BAG = 34;
 equipement_id_max = 31;
 
 item_id_min = 40;
@@ -94,7 +106,7 @@ instance_create_layer(irandom_range(20,room_width-20),irandom_range(20,room_heig
 x_center = room_width/2;
 y_center = room_height/2;
 area_radius = (room_width/2)*1.414213;
-area_damage = 2;
+area_damage = 8;
 area_reduction = 0.7;
 next_area_radius = area_radius*area_reduction;
 process_resize = 0;

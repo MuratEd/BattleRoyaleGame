@@ -1,20 +1,25 @@
 draw_self();
 
-//Crosshair
+#region Crosshair
 draw_set_color(c_red);
-if(input_aim)
+if(inputAim)
 {
-	draw_sprite_ext(spr_cross,0,x_cross,y_cross,scope,scope,0,c_white,1);
-	if(laser_radius) draw_line_width(x,y,x_cross,y_cross,1.5*scope);
+	draw_sprite_ext(spr_cross,0,crossX,crossY,scope,scope,0,c_white,1);
+	if(laser) draw_line_width(x,y,crossX,crossY,1.5*scope);
 }
 else
 {
-	draw_sprite_ext(spr_cross,0,x_cross,y_cross,1,1,0,c_white,1);
-	if(laser_radius) draw_line_width(x,y,x_cross,y_cross,2);
+	draw_sprite_ext(spr_cross,0,crossX,crossY,1,1,0,c_white,1);
 }
 
-//God mode (TEST)
-//if(instance_exists(obj_target))
-//{
-//	draw_line(x,y,instance_nearest(x,y,obj_target).x,instance_nearest(x,y,obj_target).y);
-//}
+#endregion
+
+/*
+#region God mode (test)
+if(instance_exists(obj_target))
+{
+	draw_line(x,y,instance_nearest(x,y,obj_target).x,instance_nearest(x,y,obj_target).y);
+}
+
+#endregion
+*/

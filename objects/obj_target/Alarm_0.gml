@@ -6,6 +6,7 @@ if (distance_to_object(nearest_ennemy) < projectile_distance-80 && ennemy_insigh
 	new_projectile.shooter = self;
 	new_projectile.spd = projectile_speed;
 	new_projectile.dmg = projectile_damage;
+	new_projectile.hsdmg = 3;
 	new_projectile.dis = projectile_distance;
 	new_projectile.dir = point_direction(x,y,nearest_ennemy.x,nearest_ennemy.y);
 }

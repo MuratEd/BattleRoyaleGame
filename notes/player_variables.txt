@@ -1,0 +1,77 @@
+hsp								INT		Horizontal speed of the player
+vsp								INT		Vertical speed of the player
+mvpsp							INT		Speed of the player
+walksp							INT		Speed of the player by default
+runsp							INT		Speed of the player when he runs
+slowsp							INT		Speed of the player when he can't run
+
+canMove							BOOL	Player can move ? (False when dead)
+canRun							BOOL	Player can run ? (False when stamina=0)
+canRegen						BOOL	Player can regenerate HP and Stamina (False when dead)
+canUseItem						BOOL	Player can use an item ? (False when dead)
+isDead							BOOL	Player is dead ? (True when HP=0)
+
+bloodScreen						INT		Alpha of the blood vignetting
+barrierScreen					INT		Alpha of the barrier effect vignetting
+showPause						BOOL	Show pause screen ?
+showMap							BOOL	Show map screen ?
+
+healthPoint						INT		Health of the player
+healthMax						INT		Maximum health of the player
+healthRegen						INT		Regeneration of health of the player
+
+staminaPoint					INT		Stamina of the player
+staminaMax						INT		Maximum stamina of the player
+staminaRegen					INT		Regeneration of stamina of the player
+
+kill							INT		Kills of the player
+rankDef							INT		Rank of the player, set at 1 by default, update at death
+
+itemSelected					INT		ID of item selected in fast inventory
+weaponSelected					INT		ID of weapon selected in fast inventory
+inventoryMap					MAP		Map that contains inventory of the player
+
+scope							INT		Value of the dezoom, set at 1, max at 3
+laser							BOOL	Laser is enable ?
+
+helmetEquiped					BOOL	Player has a helmet equiped ?
+helmetDurability				INT		Durability of equiped helmet
+kevlarEquiped					BOOL	Player has a kevlar equiped ?
+kevlarDurability				INT		Durability of equiped kevlar
+
+mapX							INT		X position of the player in the map
+mapY							INT		Y position of the player in the map
+
+crossX							INT		X position of the crosshair
+crossY							INT		Y position of the crosshair
+crossRadius						INT		Radius between player and crosshair position
+crossDirection					INT		Direction of the crosshair in relation to the player
+
+newProjectileFire				OBJ		Newest projectile that player has fired
+lastProjectileHit				OBJ		Lastest projectile that hitted the player
+shotCooldown					INT		Frame to wait before next fire
+projectileDamage				INT		Initial damage given to projectile
+projectileHeadshot				INT		Multiplier of damage for headshot given to projectile
+projectileSpeed					INT		Speed of the projectile
+projectileDistance				INT		Maximum distance that projectile can travel
+
+leftDeadzone					INT		Value of the deadzone of the left joystick
+rightDeadzone					INT		Value of the deadzone of the right joystick
+
+inputLeft						BOOL	Horizontal value of left joystick is lower than left deadzone ?
+inputRight						BOOL	Horizontal value of left joystick is greater than left deadzone ?
+inputUp							BOOL	Vertical value of left joystick is greater than left deadzone ?
+inputDown						BOOL	Vertical value of left joystick is lower than left deadzone ?
+inputRun						BOOL	Left or right trigger pressed ?
+inputShot						BOOL	Back right button down ?
+inputAim						BOOL	Back left button down ?
+inputPickup						BOOL	A button pressed ?
+inputUse						BOOL	B button pressed ?
+inputInvLeft					BOOL	Left crosspad pressed ?
+inputInvRight					BOOL	Right crosspad pressed ?
+inputInvUp						BOOL	Up crosspad pressed ?
+inputInvDown					BOOL	Down crosspad pressed ?
+inputMap						BOOL	X button pressed ?
+inputPause						BOOL	Start button pressed ?
+inputExit						BOOL	Select button pressed while pause is active ?
+inputRestart					BOOL	Select button pressed ?

@@ -10,13 +10,13 @@ can_regen = 1;
 //Projectiles
 new_projectile = -1;
 last_projectile_hit = -1;
-projectile_damage = irandom_range(100,2000);
+projectile_damage = irandom_range(10,200);
 projectile_speed = 30;
-projectile_distance = projectile_damage*2;
-projectile_cooldown = projectile_damage/70;
+projectile_distance = projectile_damage*10;
+projectile_cooldown = projectile_damage/7;
 
 //Statistics
-player_kill = 0;
+kill = 0;
 
 //AI
 direction = irandom_range(0,360);

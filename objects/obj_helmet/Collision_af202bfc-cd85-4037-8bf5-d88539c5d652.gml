@@ -1,8 +1,8 @@
 //Player pick up helmet
-if (equipment_id != -1 && other.input_pickup)
+if (equipment_id != -1 && other.inputPickup)
 {
-	other.helmet_isEquiped = 1;
-	other.helmet_durability = 50;
+	other.helmetEquiped = 1;
+	other.helmetDurability = 50;
 	instance_destroy();
 	
 }

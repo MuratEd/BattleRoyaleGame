@@ -1,8 +1,8 @@
 //Player pick up kevlar
-if (equipment_id != -1 && other.input_pickup)
+if (equipment_id != -1 && other.inputPickup)
 {
-	other.kevlar_isEquiped = 1;
-	other.kevlar_durability = 100;
+	other.kevlarEquiped = 1;
+	other.kevlarDurability = 100;
 	instance_destroy();
 	
 }

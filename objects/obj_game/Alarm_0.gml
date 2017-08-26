@@ -1,4 +1,4 @@
-//Starting Game Area Reduction
+//Starting game area reduction
 area_damage = floor(area_damage * 1.4);
 process_resize = 1;
 

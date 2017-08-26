@@ -5,7 +5,7 @@ if(place_meeting(x,y,obj_projectile))
 {
 	last_projectile_hit = instance_nearest(x,y,obj_projectile);
 	health_point -= last_projectile_hit.dmg;
-	if(health_point <= 0) last_projectile_hit.shooter.player_kill++;
+	if(health_point <= 0) last_projectile_hit.shooter.kill++;
 	//audio_play_sound_at(snd_hit,self.x,self.y,0,10,10,1,0,0);
 	instance_destroy(last_projectile_hit);
 }
@@ -15,8 +15,8 @@ mask_index = spr_targeths;
 if(place_meeting(x,y,obj_projectile))
 {
 	last_projectile_hit = instance_nearest(x,y,obj_projectile);
-	health_point -= last_projectile_hit.dmg*3;
-	if(health_point <= 0) last_projectile_hit.shooter.player_kill++;
+	health_point -= last_projectile_hit.dmg*last_projectile_hit.hsdmg;
+	if(health_point <= 0) last_projectile_hit.shooter.kill++;
 	//audio_play_sound_at(snd_hit,self.x,y,0,10,10,1,0,0);
 	//audio_play_sound_at(snd_ding,self.x,self.y,0,10,10,1,0,0);
 	instance_destroy(last_projectile_hit);
