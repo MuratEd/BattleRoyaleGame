@@ -1,19 +1,10 @@
 {
-    "id": "b4da0bb7-1072-4dd0-9b00-17ab80069f22",
+    "id": "4e0a0f98-f356-4aa6-9be4-ec28157942c6",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_oneplayer_btn",
+    "name": "obj_options_btn",
     "eventList": [
-        {
-            "id": "c1281be5-388b-4341-a631-eb0c6c56b222",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 4,
-            "eventtype": 6,
-            "m_owner": "b4da0bb7-1072-4dd0-9b00-17ab80069f22"
-        }
+        
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "parentObjectId": "00000000-0000-0000-0000-000000000000",
@@ -31,6 +22,6 @@
     "physicsShapePoints": null,
     "physicsStartAwake": true,
     "solid": false,
-    "spriteId": "e69c2646-cc49-44a9-a4b1-b72463bb8bd1",
+    "spriteId": "1e4075ce-4e89-42c7-a8d3-e70392deb1d3",
     "visible": true
 }

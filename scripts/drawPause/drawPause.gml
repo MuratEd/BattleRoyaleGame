@@ -9,3 +9,5 @@ draw_set_font(fnt_cocogoose70);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_text(window_get_width()/2,window_get_height()/2,"Pause");
+
+draw_sprite(spr_quit,0,window_get_width()/2,(window_get_height()/2)+100);
