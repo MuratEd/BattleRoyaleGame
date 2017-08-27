@@ -16,6 +16,7 @@ isDead = 0;
 //GUI status
 bloodScreen = 0;
 barrierScreen = 0;
+shake = 0;
 showPause = 0;
 showMap = 0;
 
@@ -44,7 +45,7 @@ projectileDistance = 0;
 
 //Weapon equipement
 laser = 0;
-scope = 1;
+scope = 6;
 
 //Crosshair
 crossRadius = 100;

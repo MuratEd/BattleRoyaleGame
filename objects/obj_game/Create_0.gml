@@ -5,7 +5,7 @@ randomize();
 game_time = 0;
 
 //Count players
-nb_player = 49;
+nb_player = 99;
 player_max = 0;		//Number of player at the game start
 player_alive = 0;	//Number of actual players alive in game
 

@@ -97,6 +97,7 @@ if(!isDead)
 	
 		//Display blood vignetting
 		bloodScreen = 1;
+		shake = 5;
 	
 		//Destroy projectile tracked
 		instance_destroy(lastProjectileHit);
@@ -123,6 +124,7 @@ if(!isDead)
 	
 		//Display blood vignetting
 		bloodScreen = 1;
+		shake = 5;
 	
 		//Destroy projectile tracked
 		instance_destroy(lastProjectileHit);
@@ -137,6 +139,10 @@ if(!isDead)
 		healthPoint -= obj_game.area_damage;
 		barrierScreen = 1;
 	}
+}
+if(shake != 0)
+{
+	shake = shakeScreen(0,shake,0.5);
 }
 
 #endregion
