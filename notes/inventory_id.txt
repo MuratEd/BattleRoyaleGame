@@ -1,0 +1,56 @@
+Inventory : Map[String,Array]
+
+Bag
+	Slot 0
+	Slot 1
+	Slot 2
+	Slot 3
+	Slot 4
+	Slot 5
+	Slot 6
+	Slot 7
+	Slot 8
+	Slot 9
+	Slot 10
+	Slot 11
+	Slot 12
+	Slot 13
+	Slot 14
+	Slot 15
+	Slot 16
+	Slot 17
+	Slot 18
+	Slot 19
+	Slot 20
+
+Ground
+	Slot 0
+	Slot 1
+	Slot 2
+	Slot 3
+	Slot 4
+	Slot 5
+	Slot 6
+	Slot 7
+	Slot 8
+	Slot 9
+	Slot 10
+	Slot 11
+	Slot 12
+	Slot 13
+	Slot 14
+	Slot 15
+	Slot 16
+	Slot 17
+	Slot 18
+	Slot 19
+	Slot 20
+
+Weapon
+	Slot 0
+	Slot 1
+
+Equipement
+	Slot 0	-	Helmet
+	Slot 1	-	Kevlar
+	Slot 2	-	Backpack

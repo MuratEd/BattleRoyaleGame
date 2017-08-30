@@ -791,6 +791,14 @@
             }
         },
         {
+            "Key": "b303f35a-01a8-4d32-b522-547ca531d653",
+            "Value": {
+                "id": "1959b527-59b9-4507-af00-42efca5f676a",
+                "resourcePath": "notes\\inventory_id.yy",
+                "resourceType": "GMNotes"
+            }
+        },
+        {
             "Key": "b3234652-063d-48b7-bae3-f6b2d28b518d",
             "Value": {
                 "id": "86931ceb-00bd-43f7-89c1-f2173892da64",
